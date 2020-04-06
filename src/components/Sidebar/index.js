@@ -1,11 +1,13 @@
 import React from 'react';
 import ProjectCategoriesList from '../ProjectCategoriesList';
 
+import { Container } from './styles';
+
 const Sidebar = () => {
   return (
-    <div>
+    <Container>
       <ProjectCategoriesList />
-    </div>
+    </Container>
   );
 };
 

@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EmployeesListItem from '../EmployeesListItem';
 
+import { Container } from './styles';
+
 const EmployeesList = ({ employees }) => {
   return (
-    <div>
+    <Container>
       <div>
         <a href="/employees/new">NEW EMPLOYEE</a>
       </div>
@@ -15,7 +17,7 @@ const EmployeesList = ({ employees }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Container>
   );
 };
 
