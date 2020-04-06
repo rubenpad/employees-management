@@ -9,7 +9,7 @@ describe('ProjectCategoriesListItem tests', () => {
     projectCategoriesListItem = shallow(<ProjectCategoriesListItem />);
   });
 
-  test('Should renders the ProjectCategoriesList component', () => {
+  test('Should renders the ProjectCategoriesListItem component', () => {
     expect(projectCategoriesListItem.length).toBe(1);
   });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DEFAULT_CATEGORY = { id: 1, name: 'Fake', status: true };
+const DEFAULT_CATEGORY = { id: 1, name: 'All categories', status: true };
 
 const ProjectCategoriesListItem = ({ category = DEFAULT_CATEGORY }) => {
   return (

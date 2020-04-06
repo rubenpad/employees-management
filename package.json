@@ -8,13 +8,16 @@
   "keywords": [
     "react",
     "javascript",
-    "styled-components"
+    "styled-components",
+    "jest",
+    "unit test"
   ],
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.9.0",
