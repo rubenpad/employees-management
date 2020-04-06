@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gravatar from '../../utils/gravatar';
 
-const DEFAULT_EMAIL = 'any@mail.com';
-
-const Avatar = ({ email = DEFAULT_EMAIL }) => {
+const Avatar = ({ email }) => {
   const urlSrc = gravatar(email);
 
   return (
@@ -12,6 +10,10 @@ const Avatar = ({ email = DEFAULT_EMAIL }) => {
       <img src={urlSrc} alt="User avatar" />
     </div>
   );
+};
+
+Avatar.defaultProps = {
+  email: 'any@mail.com',
 };
 
 Avatar.propTypes = {

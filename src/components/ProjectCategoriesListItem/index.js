@@ -1,6 +1,5 @@
 import React from 'react';
-
-const DEFAULT_CATEGORY = { id: 1, name: 'All categories', status: true };
+import PropTypes from 'prop-types';
 
 const ProjectCategoriesListItem = ({ category = DEFAULT_CATEGORY }) => {
   return (
@@ -8,6 +7,14 @@ const ProjectCategoriesListItem = ({ category = DEFAULT_CATEGORY }) => {
       <h2>{category.name}</h2>
     </li>
   );
+};
+
+ProjectCategoriesListItem.defaultProps = {
+  category: { id: 1, name: 'All categories', status: true },
+};
+
+ProjectCategoriesListItem.propTypes = {
+  category: PropTypes.object,
 };
 
 export default ProjectCategoriesListItem;

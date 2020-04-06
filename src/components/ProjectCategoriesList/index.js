@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProjectCategoriesListItem from '../ProjectCategoriesListItem';
 
-const ProjectCategoriesList = ({ categories = [] }) => {
+const ProjectCategoriesList = ({ categories }) => {
   return (
     <div>
       <div>
@@ -14,6 +15,14 @@ const ProjectCategoriesList = ({ categories = [] }) => {
       </div>
     </div>
   );
+};
+
+ProjectCategoriesList.defaultProps = {
+  categories: [],
+};
+
+ProjectCategoriesList.propTypes = {
+  categories: PropTypes.array,
 };
 
 export default ProjectCategoriesList;
