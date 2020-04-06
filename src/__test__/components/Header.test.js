@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Header from '../../components/Header';
+import Avatar from '../../components/Avatar';
 
 describe('Header component tests', () => {
   let header;
@@ -15,5 +16,9 @@ describe('Header component tests', () => {
 
   test('Should renders the company logo image', () => {
     expect(header.find('div').childAt(0).type()).toEqual('img');
+  });
+
+  test('Should exists the Avatar component', () => {
+    expect(header.find(Avatar)).toHaveLength(1);
   });
 });
