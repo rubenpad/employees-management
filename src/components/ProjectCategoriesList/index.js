@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProjectCategoriesListItem from '../ProjectCategoriesListItem';
+import projectCategoriesMock from '../../__mocks__/projectCategoriesMock';
+import { ListContainer, Content } from './styles';
 
 const ProjectCategoriesList = ({ categories }) => {
   return (
-    <div>
-      <div>
+    <ListContainer>
+      <Content>
         <h2>Project Categories</h2>
         <ul>
-          {categories.map(category => (
+          {projectCategoriesMock.map(category => (
             <ProjectCategoriesListItem key={category.id} category={category} />
           ))}
         </ul>
-      </div>
-    </div>
+      </Content>
+    </ListContainer>
   );
 };
 

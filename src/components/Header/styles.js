@@ -3,7 +3,7 @@ import theme from '../../styles/theme';
 import { above } from '../../styles/index';
 
 export const HeaderContainer = styled.header`
-  padding: ${theme.spaces[8]} ${theme.spaces[16]};
+  padding: ${theme.spaces[2]} ${theme.spaces[4]};
   background: ${theme.colors.dark};
 
   ${above.mediumL`

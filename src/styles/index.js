@@ -12,7 +12,6 @@ export const above = Object.keys(theme.breakpoints).reduce((acc, label) => {
 
 // Global styles to reset some browser default styles
 export const GlobalStyles = createGlobalStyle`
-
   * {
     margin: 0;
     padding: 0;
@@ -30,5 +29,14 @@ export const GlobalStyles = createGlobalStyle`
   button {
     border: 0;
     outline: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: ${theme.fonts.main};
+  }
+
+  body {
+    background: ${theme.colors.light};
+    font-family: ${theme.fonts.alter};
   }
 `;

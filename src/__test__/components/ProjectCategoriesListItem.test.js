@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import ProjectCategoriesListItem from '../../components/ProjectCategoriesListItem';
 
 describe('ProjectCategoriesListItem tests', () => {
@@ -13,7 +14,8 @@ describe('ProjectCategoriesListItem tests', () => {
     expect(projectCategoriesListItem.length).toBe(1);
   });
 
-  test('Should renders the category title', () => {
-    expect(projectCategoriesListItem.find('li').childAt(0).type()).toBe('h2');
+  test('Should renders the category title in a `li` element', () => {
+    render(<ProjectCategoriesListItem />);
+    screen.queryByRole('li');
   });
 });

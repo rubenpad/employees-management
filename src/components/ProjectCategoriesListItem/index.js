@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProjectCategoriesListItem = ({ category = DEFAULT_CATEGORY }) => {
+import { Item } from './styles';
+
+const ProjectCategoriesListItem = ({ category }) => {
   return (
-    <li>
-      <h2>{category.name}</h2>
-    </li>
+    <Item>
+      <h3>{category.name}</h3>
+    </Item>
   );
 };
 
