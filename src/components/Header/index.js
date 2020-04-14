@@ -1,15 +1,16 @@
 import React from 'react';
-import Avatar from '../Avatar';
 
-import { HeaderContainer } from './styles';
+import Logo from '../../static/logo.png';
+import Avatar from '../Avatar';
+import { HeaderContainer, HeaderContent, LogoImage } from './styles';
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <div>
-        <img src="" alt="Company Logo" />
+      <HeaderContent>
+        <LogoImage src={Logo} alt="Company Logo" />
         <Avatar />
-      </div>
+      </HeaderContent>
     </HeaderContainer>
   );
 };

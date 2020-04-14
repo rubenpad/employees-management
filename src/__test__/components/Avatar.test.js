@@ -12,8 +12,4 @@ describe('Avatar component tests', () => {
   test('Should renders the Avatar component', () => {
     expect(avatar.length).toBe(1);
   });
-
-  test('Should renders the user avatar image', () => {
-    expect(avatar.find('div').childAt(0).type()).toEqual('img');
-  });
 });
