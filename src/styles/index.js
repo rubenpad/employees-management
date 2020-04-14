@@ -24,6 +24,8 @@ export const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: ${theme.colors.dark};
+    font-size: ${theme.fontSize[2]};
   }
 
   button {

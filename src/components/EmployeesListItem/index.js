@@ -1,24 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Avatar from '../Avatar';
+import { ItemContainer, ItemContent, Information, Action } from './styles';
 
 const EmployeesListItem = ({ employee }) => {
   return (
-    <div>
-      <div>
-        <Avatar email={employee.email}/>
-        <div>
-          <h2>{employee.name}</h2>
-          <span>{employee.jobTitle}</span>
+    <ItemContainer>
+      <ItemContent>
+        <Avatar email={employee.email} />
+        <Information>
+          <h2>{`${employee.first_name} ${employee.last_name}`}</h2>
+          <span>{employee.job_title}</span>
           <span>{employee.salary}</span>
-          <span>{employee.isActive}</span>
-        </div>
-        <div>
-          <button type="button">EDIT</button>
+          <span>
+            {`${employee.start_date} - ${
+              employee.status ? employee.end_date : 'Current'
+            }`}
+          </span>
+        </Information>
+        <Action>
+          <a href="/employees/edit">EDIT</a>
           <button type="button">DELETE</button>
-        </div>
-      </div>
-    </div>
+        </Action>
+      </ItemContent>
+    </ItemContainer>
   );
 };
 

@@ -5,10 +5,6 @@ import { above } from '../../styles/index';
 export const ListContainer = styled.div`
   width: 100%;
   padding: ${theme.spaces[3]};
-
-  ${above.medium`
-    box-shadow: 0 0 ${theme.spaces[2]} rgba(0, 0, 0, 0.3);
-  `}
 `;
 
 export const Content = styled.div`
