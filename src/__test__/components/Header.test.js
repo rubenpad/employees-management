@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Header from '../../components/Header';
 import Avatar from '../../components/Avatar';
 
@@ -12,6 +13,11 @@ describe('Header component tests', () => {
 
   test('Should renders the Header component', () => {
     expect(header.length).toBe(1);
+  });
+
+  test('Should renders the company logo', () => {
+    render(<Header />);
+    screen.getByAltText('Company Logo');
   });
 
   test('Should exists the Avatar component', () => {
