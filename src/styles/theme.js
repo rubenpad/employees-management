@@ -23,11 +23,12 @@ const theme = {
   colors: {
     primary: '#f64b53',
     secondary: '#4c56ba',
+    alter: '#a9b2c8',
     dark: '#15171a',
     light: '#f6f7f9',
   },
   breakpoints: {
-    small: 400,
+    small: 480,
     medium: 767,
     mediumL: 960,
     large: 1140,

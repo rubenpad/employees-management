@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EmployeesListItem from '../EmployeesListItem';
 
-import { Container } from './styles';
+import { Container, Top, Button, Search } from './styles';
 
 const EmployeesList = ({ employees }) => {
   return (
     <Container>
-      <div>
-        <a href="/employees/new">NEW EMPLOYEE</a>
-      </div>
+      <Top>
+        <Search type="text" placeholder="Search an employee..." />
+        <Button href="/employees/new">Register Employee</Button>
+      </Top>
       <ul>
         {employees.map(employee => (
           <li key={employee.id}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import EmployeesList from '../../components/EmployeesList';
 import employeesMock from '../../__mocks__/employeesMock';
 
@@ -21,10 +22,7 @@ describe('EmployeesList component tests', () => {
   });
 
   test('Should has a button to add a new employee', () => {
-    expect(
-      employeesList.containsMatchingElement(
-        <a href="/employees/new">NEW EMPLOYEE</a>
-      )
-    ).toBe(true);
+    render(<EmployeesList />);
+    screen.getByText('Register Employee');
   });
 });
