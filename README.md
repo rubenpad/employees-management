@@ -10,11 +10,11 @@ Through the development of this project I use modern technologies and best pract
 ### 🚀 Quick start
 
 1. Clone the repository
-   
+
     `git clone git@github.com:rubbenpad/employees-management.git`
 
 2. Navigate into your new created directory
-   
+
     `cd employees-management`
 
 3. Install dependencies
@@ -22,7 +22,7 @@ Through the development of this project I use modern technologies and best pract
     `npm install`
 
 4. Start developing
-   
+ 
     `npm run dev`
 
 5. Open the source code and make the magic happens
@@ -30,7 +30,7 @@ Through the development of this project I use modern technologies and best pract
 
 ### Test
 
-1. You can view the source of tests implemented
+1. You can view the source code of implemented tests
 
     `src/__test__/`
 
@@ -43,7 +43,7 @@ Through the development of this project I use modern technologies and best pract
     `npm run test:coverage`
 
 
-### If you want to try the application in production mode make this:
+### If you want to try the application in production mode:
 
 1. Run the build script
 
@@ -56,4 +56,3 @@ Through the development of this project I use modern technologies and best pract
    `serve -s dist`
 
 4. Now visit the url provide by serve and you can view the app running. 
-
