@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import theme from '../../styles/theme';
-import { above } from '../../styles/index';
+import { responsive } from '../../styles/index';
 
 export const Container = styled.aside`
-  padding: ${theme.spaces[5]} ${theme.spaces[4]};
+  padding: 16px;
 
-  ${above.medium`
+  ${responsive.medium`
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 

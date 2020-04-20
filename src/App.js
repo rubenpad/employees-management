@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Dashboard from './containers/Dashboard';
+import Login from './containers/Login';
 import { GlobalStyles } from './styles';
 
 const App = () => (
   <>
     <GlobalStyles />
-    <Dashboard />
+    <Login />
   </>
 );
 

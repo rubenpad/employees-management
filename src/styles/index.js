@@ -1,9 +1,38 @@
 import { css, createGlobalStyle } from 'styled-components';
-import theme from './theme';
 
-export const above = Object.keys(theme.breakpoints).reduce((acc, label) => {
+export const fonts = {
+  main: 'Roboto',
+  alter: 'system-ui',
+};
+
+export const colors = {
+  primary: '#f64b53',
+  secondary: '#29BE60',
+  alter: '#c7c7c7',
+  dark: '#15171a',
+  light: '#f6f7f9',
+  white: '#ffffff',
+};
+
+export const breakpoints = {
+  small: 480,
+  medium: 767,
+  mediumL: 960,
+  large: 1140,
+};
+
+export const fontSize = {
+  0: 0,
+  1: '12px',
+  2: '14px',
+  3: '16px',
+  4: '20px',
+  5: '24px',
+};
+
+export const responsive = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (min-width: ${theme.breakpoints[label]}px) {
+    @media (min-width: ${breakpoints[label]}px) {
       ${css(...args)}
     }
   `;
@@ -24,21 +53,29 @@ export const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${theme.colors.dark};
-    font-size: ${theme.fontSize[2]};
+    color: ${colors.dark};
+    font-size: ${fontSize[2]};
+  }
+
+  input {
+    outline: 0;
+    border: 0;
+    border-radius: 4px;
   }
 
   button {
     border: 0;
     outline: 0;
+    padding: 12px 20px;
+    border-radius: 4px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: ${theme.fonts.main};
+    font-family: ${fonts.main};
   }
 
   body {
-    background: ${theme.colors.light};
-    font-family: ${theme.fonts.alter};
+    background: ${colors.light};
+    font-family: ${fonts.alter};
   }
 `;

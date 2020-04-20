@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import theme from '../../styles/theme';
+import { colors } from '../../styles/index';
 
 export const Item = styled.li`
-  padding: ${theme.spaces[2]};
+  padding: 8px;
   cursor: pointer;
   user-select: none;
 
   :hover {
-    color: ${theme.colors.light};
-    background: ${theme.colors.dark};
+    color: ${colors.light};
+    background: ${colors.dark};
   }
 `;

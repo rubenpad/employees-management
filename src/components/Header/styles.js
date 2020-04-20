@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import theme from '../../styles/theme';
-import { above } from '../../styles/index';
+import { responsive, colors } from '../../styles/index';
 
 export const HeaderContainer = styled.header`
-  padding: ${theme.spaces[2]} ${theme.spaces[4]};
-  background: ${theme.colors.dark};
+  padding: 16px;
+  background: ${colors.dark};
 
-  ${above.mediumL`
+  ${responsive.mediumL`
     grid-column: 1 / 3;
     grid-row: 1 / 2;
   `}

@@ -1,17 +1,16 @@
 import styled from 'styled-components';
-import theme from '../../styles/theme';
-import { above } from '../../styles/index';
+import { responsive, colors } from '../../styles/index';
 
 export const ItemContainer = styled.div`
   width: 100%;
-  margin: ${theme.spaces[3]} 0;
-  padding: ${theme.spaces[4]};
+  margin: 12px 0;
+  padding: 16px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: 0.5s all ease;
+  transition: all 0.5s ease;
 
   :hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -19,7 +18,7 @@ export const ItemContent = styled.div`
   display: grid;
   grid-template-rows: autofill;
 
-  ${above.medium`
+  ${responsive.medium`
     grid-template-columns: 20% 60% 20%;
     align-items: center;
   `}
@@ -32,13 +31,13 @@ export const ItemContent = styled.div`
 `;
 
 export const Information = styled.div`
-  margin: ${theme.spaces[4]};
+  margin: 16px;
   display: grid;
   grid-template-rows: autofill;
-  grid-gap: ${theme.spaces[2]};
+  grid-gap: 8px;
   text-align: center;
 
-  ${above.medium`
+  ${responsive.medium`
     text-align: left;
   `}
 `;
@@ -49,30 +48,32 @@ export const Action = styled.div`
 
   a,
   button {
-    margin: ${theme.spaces[2]} 0;
-    padding: ${theme.spaces[2]} ${theme.spaces[4]};
-    border-radius: ${theme.spaces[1]};
+    margin: 8px 0;
+    border-radius: 4px;
     text-align: center;
   }
 
   a {
-    background: ${theme.colors.light};
-    border: 1px solid ${theme.colors.dark};
+    padding: 12px 16px;
+    background: ${colors.light};
+    border: 1px solid ${colors.dark};
 
     :hover {
-      background: ${theme.colors.dark};
-      color: ${theme.colors.light};
-      border: 1px solid ${theme.colors.dark};
+      background: ${colors.dark};
+      color: ${colors.light};
+      border: 1px solid ${colors.dark};
     }
   }
 
   button {
-    background: ${theme.colors.primary};
-    color: ${theme.colors.dark};
+    background: ${colors.primary};
+    color: ${colors.dark};
     cursor: pointer;
+    opacity: 0.9;
+    transition: all 0.5s ease;
 
     :hover {
-      opacity: 0.9;
+      opacity: 1;
     }
   }
 `;
