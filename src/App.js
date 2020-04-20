@@ -2,24 +2,27 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { GlobalStyles } from './styles';
+import Layout from './components/Layout';
+import Home from './containers/Home';
 import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
-
-const def = () => (
-  <div>
-    <a href="/employees">Employess</a>
-    <a href="/login">Login</a>
-  </div>
-);
+import Register from './containers/Register';
 
 const App = ({ isAuth = true }) => (
   <BrowserRouter>
     <GlobalStyles />
-    <Switch>
-      <Route exact path="/" component={def} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/employees" component={isAuth ? Dashboard : Login} />
-    </Switch>
+    <Layout isAuth={isAuth}>
+      <Switch>
+        <Route exact path="/" component={isAuth ? Home : Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/employees" component={isAuth ? Dashboard : Login} />
+        <Route
+          exact
+          path="/employees/new"
+          component={isAuth ? Register : Login}
+        />
+      </Switch>
+    </Layout>
   </BrowserRouter>
 );
 
