@@ -1,13 +1,26 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Login from './containers/Login';
 import { GlobalStyles } from './styles';
+import Login from './containers/Login';
+import Dashboard from './containers/Dashboard';
 
-const App = () => (
-  <>
+const def = () => (
+  <div>
+    <a href="/employees">Employess</a>
+    <a href="/login">Login</a>
+  </div>
+);
+
+const App = ({ isAuth = true }) => (
+  <BrowserRouter>
     <GlobalStyles />
-    <Login />
-  </>
+    <Switch>
+      <Route exact path="/" component={def} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/employees" component={isAuth ? Dashboard : Login} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default App;

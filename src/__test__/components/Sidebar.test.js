@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Sidebar from '../../components/Sidebar';
 import ProjectCategoriesList from '../../components/ProjectCategoriesList';
 
@@ -7,7 +7,7 @@ describe('Sidebar component tests', () => {
   let sidebar;
 
   beforeEach(() => {
-    sidebar = shallow(<Sidebar />);
+    sidebar = mount(<Sidebar />);
   });
 
   test('Should renders the component', () => {

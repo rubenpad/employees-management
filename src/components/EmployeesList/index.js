@@ -4,7 +4,7 @@ import EmployeesListItem from '../EmployeesListItem';
 
 import employeesMock from '../../__mocks__/employeesMock';
 
-import { Container, Top, SearchLabel, Button } from './styles';
+import { Container, Top, SearchLabel, Link } from './styles';
 
 const EmployeesList = ({ employees }) => {
   const [query, setQuery] = useState('');
@@ -23,7 +23,7 @@ const EmployeesList = ({ employees }) => {
             placeholder="Search an employee..."
           />
         </SearchLabel>
-        <Button>Register Employee</Button>
+        <Link to="/employees/new">Register Employee</Link>
       </Top>
       <ul>
         {employeesMock.map(employee => (

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
 import { responsive, colors } from '../../styles/index';
 
 export const Container = styled.div`
@@ -24,7 +25,7 @@ export const Top = styled.div`
   `}
 `;
 
-export const Button = styled.a`
+export const Link = styled(LinkRouter)`
   display: none;
 
   ${responsive.medium`

@@ -1,13 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    main: './src/index.js',
-  },
+  entry: './src/index.js',
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
     publicPath: '/',
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
