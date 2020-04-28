@@ -8,7 +8,7 @@ import Login from './containers/Login';
 import Dashboard from './containers/Dashboard';
 import Register from './containers/Register';
 
-const App = ({ isAuth = true }) => (
+const App = ({ isAuth = false}) => (
   <BrowserRouter>
     <GlobalStyles />
     <Layout isAuth={isAuth}>
