@@ -1,15 +1,19 @@
 'use strict'
 
-const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
+const express = require('express')
+const { bold } = require('kleur')
 
-const typeDefs = require('./schema.js')
-const resolvers = require('./resolvers.js')
-
-const server = new ApolloServer({ typeDefs, resolvers })
+const { config } = require('./config')
+const typeDefs = require('./schema')
+const server = new ApolloServer({ typeDefs })
 const app = express()
 server.applyMiddleware({ app })
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`)
+app.listen(config.port, () => {
+  console.log(
+    bold(
+      `[server] ready on http://localhost:${config.port}${server.graphqlPath}`
+    )
+  )
 })
