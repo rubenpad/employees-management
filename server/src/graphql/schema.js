@@ -21,21 +21,22 @@ const typeDefs = gql`
     updatedAt: String
     isActive: Boolean
     city: String
-    categoryId: ID
+    projectCategoryId: ID
     companyId: ID!
   }
 
-  type Category {
+  type ProjectCategory {
     id: ID!
     name: String
   }
 
   input CompanyCredentials {
+    name: String
     email: String!
     password: String!
   }
 
-  input CategoryInput {
+  input ProjectCategoryInput {
     name: String!
   }
 
@@ -47,14 +48,14 @@ const typeDefs = gql`
     salary: Int!
     birthDate: String!
     city: String
-    categoryId: ID!
+    projectCategoryId: ID!
   }
 
   type Query {
     employees: [Employee]!
     employee(id: ID!): Employee!
-    categories: [Category]!
-    category(id: ID!): Category!
+    projectCategories: [ProjectCategory]!
+    projectCategory(id: ID!): ProjectCategory!
   }
 
   type Mutation {
@@ -63,9 +64,9 @@ const typeDefs = gql`
     createEmployee(input: EmployeeInput!): ID!
     updateEmployee(id: ID! input: EmployeeInput): ID!
     deleteEmployee(id: ID!): String
-    createCategory(input: CategoryInput!): ID!
-    updateCategory(id: ID! input: CategoryInput): ID
-    deleteCategory(id: ID!): String
+    createProjectCategory(input: ProjectCategoryInput!): ID!
+    updateProjectCategory(id: ID! input: ProjectCategoryInput): ID
+    deleteProjectCategory(id: ID!): String
   }
 `
 
