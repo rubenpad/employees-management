@@ -30,6 +30,7 @@
     "mongodb": "3.5.6"
   },
   "devDependencies": {
+    "husky": "4.2.5",
     "jest": "25.5.0"
   },
   "jest": {
