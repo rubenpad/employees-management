@@ -46,7 +46,7 @@ module.exports = {
       // Check if the company already have been created, if true
       // throw a new error
       const company = await dataSources.companyAPI.getCompany({ email })
-      if (company) throw new Error('Company email is already in use')
+      if (company) return new Error('Company email is already in use')
 
       const createdCompanyId = await dataSources.companyAPI.createCompany({
         company: input
