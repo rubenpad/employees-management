@@ -2,19 +2,21 @@
 
 const { ApolloServer } = require('apollo-server-express')
 const express = require('express')
-const isEmail = require('isemail')
 const { bold } = require('kleur')
 
 const { config } = require('./config')
 const verifyToken = require('./utils/verifyToken')
-const CompanyAPI = require('./datasources/company')
-const EmployeeAPI = require('./datasources/employee')
 const resolvers = require('./graphql/resolvers')
 const typeDefs = require('./graphql/schema')
 
+const CompanyAPI = require('./datasources/company')
+const EmployeeAPI = require('./datasources/employee')
+const CategoryAPI = require('./datasources/category')
+
 const dataSources = () => ({
   companyAPI: new CompanyAPI(),
-  employeeAPI: new EmployeeAPI()
+  employeeAPI: new EmployeeAPI(),
+  categoryAPI: new CategoryAPI()
 })
 
 const context = async ({ req }) => {

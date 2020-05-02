@@ -9,11 +9,7 @@ class CompanyAPI {
     this.database = new Mongo()
   }
 
-  async getCompany({ email: emailArg }) {
-    const email =
-      this.context && this.context.company
-        ? this.context.company.email
-        : emailArg
+  async getCompany({ email }) {
     const [company] = await this.database.getAll(this.collection, { email })
 
     return company

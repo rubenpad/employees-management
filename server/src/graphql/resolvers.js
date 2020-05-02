@@ -37,14 +37,16 @@ module.exports = {
       )
       const allCategories = await dataSources.categoryAPI.getCategories()
 
-      const categories = allCategories.reduce((acc, current) => {
-        categoriesAndCompaniesId.forEach((categoryAndCompany) => {
-          if (current._id === categoryAndCompany.categoryId) {
-            acc.push(current)
-          }
-          return current
-        }, [])
-      })
+      const categories = allCategories.length
+        ? allCategories.reduce((acc, current) => {
+            categoriesAndCompaniesId.forEach((categoryAndCompany) => {
+              if (current._id === categoryAndCompany.categoryId) {
+                acc.push(current)
+              }
+              return current
+            }, [])
+          })
+        : []
 
       return categories
     }

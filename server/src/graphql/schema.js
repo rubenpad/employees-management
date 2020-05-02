@@ -54,18 +54,17 @@ const typeDefs = gql`
   type Query {
     employees: [Employee]!
     employee(id: ID!): Employee!
-    projectCategories: [ProjectCategory]!
-    projectCategory(id: ID!): ProjectCategory!
+    categories: [ProjectCategory]
   }
 
   type Mutation {
     login(input: CompanyCredentials!): String
     signup(input: CompanyCredentials!): String
     createEmployee(input: EmployeeInput!): ID!
-    updateEmployee(id: ID! input: EmployeeInput): ID!
+    updateEmployee(id: ID!, input: EmployeeInput): ID!
     deleteEmployee(id: ID!): String
     createProjectCategory(input: ProjectCategoryInput!): ID!
-    updateProjectCategory(id: ID! input: ProjectCategoryInput): ID
+    updateProjectCategory(id: ID!, input: ProjectCategoryInput): ID
     deleteProjectCategory(id: ID!): String
   }
 `
