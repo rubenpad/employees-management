@@ -22,9 +22,7 @@ module.exports = {
 
       return employees
     },
-    employee: () => {},
     projectCategories: () => {},
-    projectCategory: () => {}
   },
 
   Mutation: {

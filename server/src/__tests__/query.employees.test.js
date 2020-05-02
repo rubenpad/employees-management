@@ -3,9 +3,9 @@
 const resolvers = require('../graphql/resolvers')
 const mockContext = require('../__mocks__/mockContext')
 const employeesMock = require('../__mocks__/employeesMock')
+const { companyId } = require('../__mocks__/utils')
 
 const { getEmployees } = mockContext.dataSources.employeeAPI
-const companyId = '5eac1de0fc13ae56ea000011'
 const employeesByCompany = employeesMock.filter(
   (employee) => employee.companyId === companyId
 )
