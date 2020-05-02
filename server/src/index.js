@@ -2,27 +2,34 @@
 
 const { ApolloServer } = require('apollo-server-express')
 const express = require('express')
+const isEmail = require('isemail')
 const { bold } = require('kleur')
 
 const { config } = require('./config')
-const Mongo = require('./lib/mongo')
-const CompanyAPI = require('./datasources/companies')
+const verifyToken = require('./utils/verifyToken')
+const CompanyAPI = require('./datasources/company')
+const EmployeeAPI = require('./datasources/employee')
 const resolvers = require('./graphql/resolvers')
 const typeDefs = require('./graphql/schema')
 
-// Mongo class expose a connection and CRUD methods. It is passed as
-// argument to datasources so each resolver has access to these
-const database = new Mongo()
 const dataSources = () => ({
-  companyAPI: new CompanyAPI({ database })
+  companyAPI: new CompanyAPI(),
+  employeeAPI: new EmployeeAPI()
 })
 
-const context = async ({ req }) => {}
+const context = async ({ req }) => {
+  const bearerToken = req.headers.authorization || ''
+  const token = bearerToken.split(' ')[1]
+  const company = verifyToken(token)
+
+  return { company }
+}
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  dataSources
+  dataSources,
+  context
 })
 const app = express()
 server.applyMiddleware({ app })

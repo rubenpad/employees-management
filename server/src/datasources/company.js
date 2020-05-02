@@ -1,21 +1,19 @@
 'use strict'
 
-const { DataSource } = require('apollo-datasource')
-const isEmail = require('isemail')
 const bcrypt = require('bcrypt')
+const Mongo = require('../lib/mongo')
 
-class CompanyAPI extends DataSource {
-  constructor({ database }) {
-    super()
+class CompanyAPI {
+  constructor() {
     this.collection = 'companies'
-    this.database = database
+    this.database = new Mongo()
   }
 
-  initialize({ context }) {
-    this.context = context
-  }
-
-  async getCompany({ email }) {
+  async getCompany({ email: emailArg }) {
+    const email =
+      this.context && this.context.company
+        ? this.context.company.email
+        : emailArg
     const [company] = await this.database.getAll(this.collection, { email })
 
     return company
