@@ -7,7 +7,7 @@ const { config } = require('../config')
 const hashedPassword =
   '$2b$10$v6KrB3BkAIgsei7.o2t9.eItzfK2Zf7sloAGW12d5O.co4.OVdPX2'
 
-const companyId = '5eac1de0fc13ae56ea000011'
+const companyId = '5eada8d4fc13ae01fc000000'
 
 const fakeCompany = {
   name: 'MGC',

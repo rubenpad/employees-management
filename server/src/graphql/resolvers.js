@@ -22,7 +22,32 @@ module.exports = {
 
       return employees
     },
-    projectCategories: () => {},
+    categories: async (_, __, { dataSources, company }) => {
+      // Check if company user exists in the context. If not returns error
+      if (!company) {
+        throw new Error('You must be logged to perform this action')
+      }
+
+      // When token is signed _id company property becomes sub
+      // see login resolver
+      const companyId = company.sub
+
+      const categoriesAndCompaniesId = await dataSources.categoryAPI.getCategoriesAndCompaniesId(
+        { companyId }
+      )
+      const allCategories = await dataSources.categoryAPI.getCategories()
+
+      const categories = allCategories.reduce((acc, current) => {
+        categoriesAndCompaniesId.forEach((categoryAndCompany) => {
+          if (current._id === categoryAndCompany.categoryId) {
+            acc.push(current)
+          }
+          return current
+        }, [])
+      })
+
+      return categories
+    }
   },
 
   Mutation: {
@@ -77,7 +102,15 @@ module.exports = {
     createEmployee: () => {},
     updateEmployee: () => {},
     deleteEmployee: () => {},
-    createProjectCategory: () => {},
+    createProjectCategory: () => {
+      /**
+       * get categories
+       * check if category already exists
+       * if not create
+       * else
+       * obtain
+       */
+    },
     updateProjectCategory: () => {},
     deleteProjectCategory: () => {}
   }

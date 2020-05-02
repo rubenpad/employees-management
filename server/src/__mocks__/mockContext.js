@@ -3,7 +3,7 @@
 module.exports = {
   company: {
     // This is the company object created in the context
-    sub: '5eac1de0fc13ae56ea000011',
+    sub: '5eada8d4fc13ae01fc000000',
     name: 'MGC',
     email: 'mgc@mail.com',
     iat: '12345678'
@@ -15,6 +15,10 @@ module.exports = {
     },
     employeeAPI: {
       getEmployees: jest.fn()
+    },
+    categoryAPI: {
+      getCategories: jest.fn(),
+      getCategoriesAndCompaniesId: jest.fn()
     }
   }
 }
