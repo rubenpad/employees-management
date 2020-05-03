@@ -44,7 +44,7 @@ module.exports = {
                 if (current._id === categoryAndCompany.categoryId) {
                   acc.push(current)
                 }
-                return current
+                return acc
               }, [])
             })
           : []
@@ -102,7 +102,17 @@ module.exports = {
 
       return token
     },
-    createEmployee: () => {},
+    createEmployee: async (_, { input }, { dataSources, company }) => {
+      if (!company) {
+        throw new Error('You must be logged to perform this action')
+      }
+
+      const createdEmployeeId = await dataSources.employeeAPI.createEmployee({
+        employee: { ...input, companyId: company.sub }
+      })
+
+      return createdEmployeeId
+    },
     updateEmployee: () => {},
     deleteEmployee: () => {},
     createCategory: async (_, { input }, { dataSources, company }) => {

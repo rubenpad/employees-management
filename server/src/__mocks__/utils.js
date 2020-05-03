@@ -9,6 +9,7 @@ const hashedPassword =
 
 const companyId = '5eada8d4fc13ae01fc000000'
 const categoryId = '5eada8d4fc13ae01fc000001'
+const employeeId = '5eada8d4fc13ae01fc000002'
 
 const fakeCompany = {
   name: 'MGC',
@@ -27,9 +28,10 @@ const fakeToken = jwt.sign(
 )
 
 module.exports = {
-  hashedPassword,
   companyId,
   categoryId,
+  employeeId,
+  hashedPassword,
   fakeCompany,
   fakeToken
 }

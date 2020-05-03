@@ -14,7 +14,8 @@ module.exports = {
       getCompany: jest.fn()
     },
     employeeAPI: {
-      getEmployees: jest.fn()
+      getEmployees: jest.fn(),
+      createEmployee: jest.fn()
     },
     categoryAPI: {
       getCategories: jest.fn(),

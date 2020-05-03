@@ -47,8 +47,8 @@ const typeDefs = gql`
     phone: String!
     salary: Int!
     birthDate: String!
-    city: String
-    projectCategoryId: ID!
+    city: String!
+    category: String!
   }
 
   type Query {

@@ -12,6 +12,15 @@ class EmployeeAPI {
     const employees = await this.database.getAll(this.collection, { companyId })
     return employees || []
   }
+
+  async createEmployee({ employee }) {
+    const createdEmployeeId = await this.database.create(
+      this.collection,
+      employee
+    )
+
+    return createdEmployeeId
+  }
 }
 
 module.exports = EmployeeAPI
