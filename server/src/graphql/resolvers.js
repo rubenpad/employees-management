@@ -37,16 +37,17 @@ module.exports = {
       )
       const allCategories = await dataSources.categoryAPI.getCategories()
 
-      const categories = allCategories.length
-        ? allCategories.reduce((acc, current) => {
-            categoriesAndCompaniesId.forEach((categoryAndCompany) => {
-              if (current._id === categoryAndCompany.categoryId) {
-                acc.push(current)
-              }
-              return current
-            }, [])
-          })
-        : []
+      const categories =
+        allCategories.length > 0
+          ? allCategories.reduce((acc, current) => {
+              categoriesAndCompaniesId.forEach((categoryAndCompany) => {
+                if (current._id === categoryAndCompany.categoryId) {
+                  acc.push(current)
+                }
+                return current
+              }, [])
+            })
+          : []
 
       return categories
     }
@@ -104,16 +105,18 @@ module.exports = {
     createEmployee: () => {},
     updateEmployee: () => {},
     deleteEmployee: () => {},
-    createProjectCategory: () => {
-      /**
-       * get categories
-       * check if category already exists
-       * if not create
-       * else
-       * obtain
-       */
+    createCategory: async (_, { input }, { dataSources, company }) => {
+      if (!company) {
+        throw new Error('You must be logged to perform this action')
+      }
+
+      const createdCategoryId = await dataSources.categoryAPI.createCategory({
+        category: input
+      })
+
+      return createdCategoryId
     },
-    updateProjectCategory: () => {},
-    deleteProjectCategory: () => {}
+    updateCategory: () => {},
+    deleteCategory: () => {}
   }
 }

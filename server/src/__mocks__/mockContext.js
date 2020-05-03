@@ -18,7 +18,8 @@ module.exports = {
     },
     categoryAPI: {
       getCategories: jest.fn(),
-      getCategoriesAndCompaniesId: jest.fn()
+      getCategoriesAndCompaniesId: jest.fn(),
+      createCategory: jest.fn()
     }
   }
 }

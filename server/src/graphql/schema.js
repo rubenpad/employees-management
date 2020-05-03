@@ -25,7 +25,7 @@ const typeDefs = gql`
     companyId: ID!
   }
 
-  type ProjectCategory {
+  type Category {
     id: ID!
     name: String
   }
@@ -36,7 +36,7 @@ const typeDefs = gql`
     password: String!
   }
 
-  input ProjectCategoryInput {
+  input CategoryInput {
     name: String!
   }
 
@@ -54,7 +54,7 @@ const typeDefs = gql`
   type Query {
     employees: [Employee]!
     employee(id: ID!): Employee!
-    categories: [ProjectCategory]
+    categories: [Category]
   }
 
   type Mutation {
@@ -63,9 +63,9 @@ const typeDefs = gql`
     createEmployee(input: EmployeeInput!): ID!
     updateEmployee(id: ID!, input: EmployeeInput): ID!
     deleteEmployee(id: ID!): String
-    createProjectCategory(input: ProjectCategoryInput!): ID!
-    updateProjectCategory(id: ID!, input: ProjectCategoryInput): ID
-    deleteProjectCategory(id: ID!): String
+    createCategory(input: CategoryInput!): ID!
+    updateCategory(id: ID!, input: CategoryInput): ID
+    deleteCategory(id: ID!): String
   }
 `
 
