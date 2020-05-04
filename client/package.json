@@ -15,9 +15,7 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --open --mode development",
     "build": "webpack --mode production",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test": "jest"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "7.9.0",
@@ -50,7 +48,6 @@
     "eslint-plugin-react-hooks": "3.0.0",
     "file-loader": "6.0.0",
     "html-webpack-plugin": "4.0.4",
-    "husky": "4.2.3",
     "jest": "25.2.7",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",

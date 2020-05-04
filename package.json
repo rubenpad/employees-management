@@ -1,0 +1,23 @@
+{
+  "name": "employees-management",
+  "version": "1.0.0",
+  "description": "This is a fullstack application to manage employees from different companies. You can create your company user and manage employees information.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "4.2.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubbenpad/employees-management.git"
+  },
+  "author": "@rubbenpad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubbenpad/employees-management/issues"
+  },
+  "homepage": "https://github.com/rubbenpad/employees-management#readme"
+}
