@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import ProjectCategoriesList from '../../components/ProjectCategoriesList';
 import projectCategoriesMock from '../../__mocks__/projectCategoriesMock';
 
@@ -7,7 +7,7 @@ describe('ProjectCategoriesList tests', () => {
   let projectCategoriesList;
 
   beforeEach(() => {
-    projectCategoriesList = shallow(
+    projectCategoriesList = mount(
       <ProjectCategoriesList categories={projectCategoriesMock} />
     );
   });

@@ -1,8 +1,8 @@
 const employees = [
   {
     id: 1,
-    first_name: 'Auberon',
-    last_name: 'Martland',
+    firstName: 'Auberon',
+    lastName: 'Martland',
     email: 'amartland0@desdev.cn',
     phone: '6417685762',
     salary: '$2738.63',
@@ -15,8 +15,8 @@ const employees = [
   },
   {
     id: 2,
-    first_name: 'Harwilll',
-    last_name: 'Schulze',
+    firstName: 'Harwilll',
+    lastName: 'Schulze',
     email: 'hschulze1@clickbank.net',
     phone: '9253813928',
     salary: '$2678.20',
@@ -29,8 +29,8 @@ const employees = [
   },
   {
     id: 3,
-    first_name: 'Clyve',
-    last_name: 'Ginnally',
+    firstName: 'Clyve',
+    lastName: 'Ginnally',
     email: 'cginnally2@ox.ac.uk',
     phone: '3958559393',
     salary: '$4045.07',
@@ -43,8 +43,8 @@ const employees = [
   },
   {
     id: 4,
-    first_name: 'Shantee',
-    last_name: 'Gergher',
+    firstName: 'Shantee',
+    lastName: 'Gergher',
     email: 'sgergher3@mapy.cz',
     phone: '6689709162',
     salary: '$4970.80',
@@ -57,8 +57,8 @@ const employees = [
   },
   {
     id: 5,
-    first_name: 'Emogene',
-    last_name: 'Tripet',
+    firstName: 'Emogene',
+    lastName: 'Tripet',
     email: 'etripet4@lycos.com',
     phone: '8077354923',
     salary: '$3482.28',

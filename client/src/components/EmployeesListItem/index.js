@@ -10,7 +10,7 @@ const EmployeesListItem = ({ employee }) => {
       <ItemContent>
         <Avatar email={employee.email} />
         <Information>
-          <h2>{`${employee.first_name} ${employee.last_name}`}</h2>
+          <h2>{`${employee.firstName} ${employee.lastName}`}</h2>
           <span>{employee.job_title}</span>
           <span>{employee.salary}</span>
           <span>

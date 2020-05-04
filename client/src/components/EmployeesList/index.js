@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import EmployeesListItem from '../EmployeesListItem';
-
-import employeesMock from '../../__mocks__/employeesMock';
 
 import { Container, Top, SearchLabel, Link } from './styles';
 
 const EmployeesList = ({ employees }) => {
   const [query, setQuery] = useState('');
+  const [filteredEmployees, setFilteredEmployees] = useState(employees);
+
+  // Filter employees by name and first name
+  useMemo(() => {
+    const results = employees.filter(employee => {
+      return `${employee.firstName} ${employee.lastName}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+    setFilteredEmployees(results);
+  }, [employees, query]);
 
   const onChange = event => setQuery(event.target.value);
 
@@ -20,13 +29,13 @@ const EmployeesList = ({ employees }) => {
             type="text"
             value={query}
             onChange={onChange}
-            placeholder="Search an employee..."
+            placeholder="John Doe"
           />
         </SearchLabel>
         <Link to="/employees/new">Register Employee</Link>
       </Top>
       <ul>
-        {employeesMock.map(employee => (
+        {filteredEmployees.map(employee => (
           <li key={employee.id}>
             <EmployeesListItem employee={employee} />
           </li>
