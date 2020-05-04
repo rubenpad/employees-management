@@ -11,11 +11,11 @@ const EmployeesListItem = ({ employee }) => {
         <Avatar email={employee.email} />
         <Information>
           <h2>{`${employee.firstName} ${employee.lastName}`}</h2>
-          <span>{employee.job_title}</span>
+          <span>{employee.position}</span>
           <span>{employee.salary}</span>
           <span>
-            {`${employee.start_date} - ${
-              employee.status ? employee.end_date : 'Current'
+            {`${employee.createdAt} - ${
+              employee.isActive ? 'Active' : employee.updatedAt
             }`}
           </span>
         </Information>

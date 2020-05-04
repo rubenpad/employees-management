@@ -4,6 +4,10 @@ import { responsive } from '../../styles/';
 export const ListContainer = styled.div`
   width: 100%;
   padding: 16px;
+  transition: all 0.3 ease;
+
+  position: sticky;
+  top: 5px;
 `;
 
 export const ListHeader = styled.div`
@@ -55,4 +59,16 @@ export const Ul = styled.ul`
   ${responsive.medium`
     display: block;
   `}
+`;
+
+export const Item = styled.li`
+  padding: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
 `;

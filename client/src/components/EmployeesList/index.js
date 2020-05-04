@@ -8,7 +8,7 @@ const EmployeesList = ({ employees }) => {
   const [query, setQuery] = useState('');
   const [filteredEmployees, setFilteredEmployees] = useState(employees);
 
-  // Filter employees by name and first name
+  // Filter employees by first name and last name
   useMemo(() => {
     const results = employees.filter(employee => {
       return `${employee.firstName} ${employee.lastName}`
@@ -29,7 +29,7 @@ const EmployeesList = ({ employees }) => {
             type="text"
             value={query}
             onChange={onChange}
-            placeholder="John Doe"
+            placeholder="Search..."
           />
         </SearchLabel>
         <Link to="/employees/new">Register Employee</Link>

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ProjectCategoriesListItem from '../ProjectCategoriesListItem';
-import projectCategoriesMock from '../../__mocks__/projectCategoriesMock';
-import { ListContainer, Ul, ListHeader } from './styles';
+import { ListContainer, Ul, ListHeader, Item, Checkbox } from './styles';
 
-const ProjectCategoriesList = ({ categories }) => {
+const ProjectCategoriesList = ({ categories, handleChange }) => {
   const [open, setOpen] = useState(false);
   const toggleMenu = () => (open ? setOpen(false) : setOpen(true));
 
@@ -16,8 +14,16 @@ const ProjectCategoriesList = ({ categories }) => {
         <label htmlFor="toggle">&#171;</label>
       </ListHeader>
       <Ul open={open}>
-        {projectCategoriesMock.map(category => (
-          <ProjectCategoriesListItem key={category.id} category={category} />
+        {categories.map(category => (
+          <Item key={category.id}>
+            <input
+              onChange={handleChange}
+              name={category.name}
+              type="checkbox"
+              id={category.id}
+            />
+            <label htmlFor={category.id}>{category.name}</label>
+          </Item>
         ))}
       </Ul>
     </ListContainer>

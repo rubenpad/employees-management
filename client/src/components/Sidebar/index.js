@@ -3,10 +3,15 @@ import ProjectCategoriesList from '../ProjectCategoriesList';
 
 import { Container } from './styles';
 
-const Sidebar = () => {
+import projectCategoriesMock from '../../__mocks__/projectCategoriesMock';
+
+const Sidebar = ({ handleChange }) => {
   return (
     <Container>
-      <ProjectCategoriesList />
+      <ProjectCategoriesList
+        handleChange={handleChange}
+        categories={projectCategoriesMock}
+      />
     </Container>
   );
 };
