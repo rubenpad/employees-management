@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Item } from './styles';
+import { Item, Checkbox } from './styles';
 
 const ProjectCategoriesListItem = ({ category }) => {
   return (
     <Item>
-      <h3>{category.name}</h3>
+      <input type="checkbox" id={category.id} />
+      <label htmlFor={category.id}>{category.name}</label>
     </Item>
   );
 };

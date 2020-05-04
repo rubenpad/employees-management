@@ -1,10 +1,5 @@
 const projectCategoriesMock = [
   {
-    id: 0,
-    name: 'All categories',
-    is_active: true,
-  },
-  {
     id: 1,
     name: 'Marketing',
     is_active: true,

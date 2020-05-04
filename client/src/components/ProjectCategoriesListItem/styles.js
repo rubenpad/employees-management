@@ -6,8 +6,9 @@ export const Item = styled.li`
   cursor: pointer;
   user-select: none;
 
-  :hover {
-    color: ${colors.light};
-    background: ${colors.dark};
+  input {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
   }
 `;

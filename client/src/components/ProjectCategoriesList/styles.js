@@ -1,13 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { responsive } from '../../styles/';
 
 export const ListContainer = styled.div`
   width: 100%;
   padding: 16px;
 `;
 
-export const Content = styled.div`
-  display: grid;
-  grid-template-rows: autofill;
+export const ListHeader = styled.div`
+  display: flex;
+  align-items: center;
 
   h2 {
     width: 100%;
@@ -16,7 +17,42 @@ export const Content = styled.div`
     user-select: none;
   }
 
-  ul {
-    margin-top: 12px;
+  label {
+    user-select: none;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s ease-in-out;
+    transform: rotate(-90deg);
   }
+
+  input {
+    position: absolute;
+    right: 0;
+    visibility: hidden;
+
+    &:checked + label {
+      transform: rotate(90deg);
+    }
+  }
+
+  ${responsive.medium`
+    label, input {
+      display: none;
+    }
+  `}
+`;
+
+export const Ul = styled.ul`
+  display: none;
+  margin-top: 16px;
+
+  ${props =>
+    props.open &&
+    css`
+      display: block;
+    `}
+
+  ${responsive.medium`
+    display: block;
+  `}
 `;
