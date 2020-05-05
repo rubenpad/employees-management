@@ -6,7 +6,7 @@ export const fonts = {
 };
 
 export const colors = {
-  primary: '#f64b53',
+  primary: '#5551ff',
   secondary: '#29BE60',
   alter: '#c7c7c7',
   dark: '#15171a',

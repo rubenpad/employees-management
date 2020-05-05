@@ -5,6 +5,7 @@ import { GlobalStyles } from './styles';
 import Layout from './components/Layout';
 import Home from './containers/Home';
 import Login from './containers/Login';
+import Signup from './containers/Signup';
 import Dashboard from './containers/Dashboard';
 import Register from './containers/Register';
 
@@ -15,6 +16,7 @@ const App = ({ isAuth = false }) => (
       <Switch>
         <Route exact path="/" component={isAuth ? Home : Login} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/employees" component={isAuth ? Dashboard : Login} />
         <Route
           exact

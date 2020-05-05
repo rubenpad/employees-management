@@ -1,13 +1,13 @@
 import React from 'react';
 
-import FormLogin from '../../components/FormLogin';
-import { LoginContainer } from './styles';
+import LoginForm from '../../components/Forms/LoginForm';
+import { Container } from './styles';
 
 const Login = () => {
   return (
-    <LoginContainer>
-      <FormLogin />
-    </LoginContainer>
+    <Container>
+      <LoginForm />
+    </Container>
   );
 };
 

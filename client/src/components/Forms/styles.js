@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import { Form as form } from 'formik';
+import { Link as LinkRouter } from 'react-router-dom';
 import { colors } from '../../styles';
+
+export const Link = styled(LinkRouter)`
+  margin-left: 16px;
+  color: ${colors.primary};
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 export const FormContainer = styled.div`
   width: 100%;
@@ -14,6 +24,11 @@ export const FormContainer = styled.div`
 
   h2 {
     margin-bottom: 24px;
+  }
+
+  div {
+    margin: 24px 0 0 4px;
+    font-size: 14px;
   }
 `;
 

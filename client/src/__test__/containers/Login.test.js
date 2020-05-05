@@ -1,11 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 import Login from '../../containers/Login';
-import FormLogin from '../../components/FormLogin';
+import LoginForm from '../../components/Forms/LoginForm';
 
 describe('Login container tests', () => {
-  test('Should renders the FormLogin component', () => {
-    const login = mount(<Login />);
-    expect(login.find(FormLogin)).toHaveLength(1);
+  test('Should renders the LoginForm component', () => {
+    const login = mount(
+      <MemoryRouter>
+        <Login />)
+      </MemoryRouter>
+    );
+    expect(login.find(LoginForm)).toHaveLength(1);
   });
 });

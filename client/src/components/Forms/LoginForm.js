@@ -2,10 +2,10 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import Input from '../../components/Input';
-import { FormContainer, Form, Label, Button } from './styles';
+import Input from '../Input';
+import { FormContainer, Form, Button, Link } from './styles';
 
-const FormLogin = () => {
+const LoginForm = () => {
   return (
     <FormContainer>
       <h2>Login</h2>
@@ -44,8 +44,12 @@ const FormLogin = () => {
           <Button type="submit">Login</Button>
         </Form>
       </Formik>
+      <div>
+        No account?
+        <Link to="/signup">Create one</Link>
+      </div>
     </FormContainer>
   );
 };
 
-export default FormLogin;
+export default LoginForm;
