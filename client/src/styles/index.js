@@ -12,6 +12,8 @@ export const colors = {
   dark: '#15171a',
   light: '#f6f7f9',
   white: '#ffffff',
+  black: '#000',
+  error: '#d12f2e',
 };
 
 export const breakpoints = {

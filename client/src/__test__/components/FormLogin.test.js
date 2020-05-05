@@ -14,7 +14,7 @@ describe('FormLogin tests', () => {
   });
 
   test('Should has a username input and its associate label', () => {
-    expect(formLogin.find('form').childAt(0).text()).toBe('Username');
+    expect(formLogin.find('form').childAt(0).text()).toBe('Email');
     expect(formLogin.find('form').childAt(0).find('input')).toHaveLength(1);
   });
 
