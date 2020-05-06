@@ -8,10 +8,9 @@ export const fonts = {
 export const colors = {
   primary: '#5551ff',
   secondary: '#29BE60',
-  alter: '#c7c7c7',
-  dark: '#15171a',
   light: '#f6f7f9',
   white: '#ffffff',
+  dark: '#15171a',
   black: '#000',
   error: '#d12f2e',
 };
@@ -62,7 +61,7 @@ export const GlobalStyles = createGlobalStyle`
   input {
     outline: 0;
     border: 0;
-    border-radius: 4px;
+    border-radius: 2px
   }
 
   button {
@@ -79,5 +78,6 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${colors.light};
     font-family: ${fonts.alter};
+    height: 100%;
   }
 `;

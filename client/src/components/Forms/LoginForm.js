@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import Input from '../Input';
+import { Input } from '../Inputs';
 import { FormContainer, Form, Button, Link } from './styles';
 
 const LoginForm = () => {

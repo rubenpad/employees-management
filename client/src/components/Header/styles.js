@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { responsive, colors } from '../../styles/index';
 
 export const HeaderContainer = styled.header`
-  padding: 16px;
+  padding: 12px;
   background: ${colors.dark};
 
   ${responsive.mediumL`
@@ -18,5 +18,5 @@ export const HeaderContent = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  width: 80px;
+  width: 56px;
 `;

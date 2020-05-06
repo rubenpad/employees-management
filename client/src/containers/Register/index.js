@@ -1,12 +1,12 @@
 import React from 'react';
 
-import CommonForm from '../../components/CommonForm';
+import EmployeeForm from '../../components/Forms/EmployeeForm';
 import { RegisterContainer } from './styles';
 
 const Register = () => {
   return (
     <RegisterContainer>
-      <CommonForm title="Register a new employee" />
+      <EmployeeForm title="Register a new employee" />
     </RegisterContainer>
   );
 };

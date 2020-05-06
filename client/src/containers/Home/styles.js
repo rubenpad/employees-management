@@ -47,7 +47,8 @@ export const Link = styled(LinkRouter)`
   width: 50%;
   margin: 12px 0;
   padding: 12px 16px;
-  background: ${colors.primary};
+  background: ${colors.dark};
+  color: ${colors.white};
   border-radius: 4px;
   font-size: 16px;
 

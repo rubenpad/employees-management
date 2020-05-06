@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import Input from '../Input';
+import { Input } from '../Inputs';
 import { FormContainer, Form, Button, Link } from './styles';
 
 const SignupForm = () => {
@@ -24,7 +24,10 @@ const SignupForm = () => {
             .required('Email address is required'),
           password: Yup.string()
             .min(8, 'Please set a password longer than eight characters')
-            .matches(/[a-zA-Z0-9_!#%&]/)
+            .matches(
+              /[a-zA-Z0-9_!#%&]/,
+              'Password must contains numbers, letters and symbols'
+            )
             .required('Please enter a password'),
         })}
         onSubmit={(values, { setSubmitting }) => {
