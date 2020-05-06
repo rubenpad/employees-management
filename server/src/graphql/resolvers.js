@@ -69,8 +69,6 @@ module.exports = {
     },
 
     signup: async (_, { input }, { dataSources }) => {
-      const { email } = input
-
       const createdCompany = await dataSources.companyAPI.createCompany({
         company: input
       })

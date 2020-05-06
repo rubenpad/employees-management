@@ -39,4 +39,4 @@ function createStore() {
   return { company, category, employee }
 }
 
-module.exports = createStore
+module.exports = { createStore }
