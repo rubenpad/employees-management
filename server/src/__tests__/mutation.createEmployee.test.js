@@ -2,26 +2,28 @@
 
 const resolvers = require('../graphql/resolvers')
 const mockContext = require('../__mocks__/mockContext')
-const { companyId, employeeId } = require('../__mocks__/utils')
+const { companyUuid, employeeUuid } = require('../__mocks__/utils')
 
 const newEmployee = {
+  uuid: employeeUuid,
   firstName: 'Mark',
   lastName: 'Manson',
   email: 'manson@mail.com',
-  phone: 33412943,
   salary: 4000,
-  birthDate: '12/09/20',
+  birthDate: '12/09/2000',
   city: 'Bogotá',
-  category: 'Software Engineering'
+  isActive: true,
+  category: 'software engineering',
+  contractType: 'full time'
 }
 
 const { createEmployee } = mockContext.dataSources.employeeAPI
 
 describe('[Mutation.createEmployee]', () => {
-  test('Should create an employee with company user logged', async () => {
-    createEmployee.mockReturnValueOnce(employeeId)
+  test('Should creates an employee with company user logged', async () => {
+    createEmployee.mockResolvedValueOnce({ id: 1, ...newEmployee })
 
-    const createdEmployeeId = await resolvers.Mutation.createEmployee(
+    const createdEmployee = await resolvers.Mutation.createEmployee(
       null,
       { input: newEmployee },
       mockContext
@@ -29,9 +31,9 @@ describe('[Mutation.createEmployee]', () => {
 
     expect(createEmployee).toHaveBeenCalledTimes(1)
     expect(createEmployee).toHaveBeenCalledWith({
-      employee: { ...newEmployee, companyId }
+      employee: { ...newEmployee, companyId: companyUuid }
     })
-    expect(createdEmployeeId).toEqual(employeeId)
+    expect(createdEmployee).toEqual({ id: 1, ...newEmployee })
   })
 
   test('Should fails when try to create an employee and company user is no logged', async () => {

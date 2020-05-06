@@ -3,25 +3,26 @@
 const resolvers = require('../graphql/resolvers')
 const mockContext = require('../__mocks__/mockContext')
 const employeesMock = require('../__mocks__/employeesMock')
-const { companyId } = require('../__mocks__/utils')
+const { companyUuid } = require('../__mocks__/utils')
 
 const { getEmployees } = mockContext.dataSources.employeeAPI
 const employeesByCompany = employeesMock.filter(
-  (employee) => employee.companyId === companyId
+  (employee) => employee.companyId === companyUuid
 )
 
 describe('[Query.employees]', () => {
   test('Should returns the employees list of logged user company', async () => {
     getEmployees.mockReturnValueOnce(employeesByCompany)
 
-    const employees = await resolvers.Query.employees(null, {}, mockContext)
+    const employees = await resolvers.Query.getEmployees(null, {}, mockContext)
+
     expect(getEmployees).toHaveBeenCalledTimes(1)
     expect(employees).toEqual(employeesByCompany)
   })
 
   test('Should returns an error if there is not a company user logged', async () => {
     try {
-      await resolvers.Query.employees(
+      await resolvers.Query.getEmployees(
         null,
         {},
         // mockContext by default has a company

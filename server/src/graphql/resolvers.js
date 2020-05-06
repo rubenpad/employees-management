@@ -6,7 +6,7 @@ const { config } = require('../config')
 
 module.exports = {
   Query: {
-    employees: async (_, __, { dataSources, company }) => {
+    getEmployees: async (_, __, { dataSources, company }) => {
       // Check if company user exists in the context. If not returns error
       if (!company) {
         throw new Error('You must be logged to perform this action')
@@ -22,7 +22,7 @@ module.exports = {
 
       return employees
     },
-    categories: async (_, __, { dataSources, company }) => {
+    getCategories: async (_, __, { dataSources, company }) => {
       // Check if company user exists in the context. If not returns error
       if (!company) {
         throw new Error('You must be logged to perform this action')
@@ -32,22 +32,9 @@ module.exports = {
       // see login resolver
       const companyId = company.sub
 
-      const categoriesAndCompaniesId = await dataSources.categoryAPI.getCategoriesAndCompaniesId(
-        { companyId }
-      )
-      const allCategories = await dataSources.categoryAPI.getCategories()
-
-      const categories =
-        allCategories.length > 0
-          ? allCategories.reduce((acc, current) => {
-              categoriesAndCompaniesId.forEach((categoryAndCompany) => {
-                if (current._id === categoryAndCompany.categoryId) {
-                  acc.push(current)
-                }
-                return acc
-              }, [])
-            })
-          : []
+      const categories = await dataSources.categoryAPI.getCategories({
+        companyId
+      })
 
       return categories
     }
@@ -71,7 +58,7 @@ module.exports = {
 
       const token = jwt.sign(
         {
-          sub: company._id,
+          sub: company.uuid,
           name: company.name,
           email: company.email
         },
@@ -84,17 +71,16 @@ module.exports = {
     signup: async (_, { input }, { dataSources }) => {
       const { email } = input
 
-      // Check if the company already have been created, if true
-      // throw a new error
-      const company = await dataSources.companyAPI.getCompany({ email })
-      if (company) throw new Error('Company email is already in use')
-
-      const createdCompanyId = await dataSources.companyAPI.createCompany({
+      const createdCompany = await dataSources.companyAPI.createCompany({
         company: input
       })
 
+      if (createdCompany === null) {
+        throw new Error('Company email is already in use')
+      }
+
       const newCompany = {
-        sub: createdCompanyId,
+        sub: createdCompany.uuid,
         name: input.name,
         email: input.email
       }
@@ -107,11 +93,11 @@ module.exports = {
         throw new Error('You must be logged to perform this action')
       }
 
-      const createdEmployeeId = await dataSources.employeeAPI.createEmployee({
+      const createdEmployee = await dataSources.employeeAPI.createEmployee({
         employee: { ...input, companyId: company.sub }
       })
 
-      return createdEmployeeId
+      return createdEmployee
     },
     updateEmployee: () => {},
     deleteEmployee: () => {},

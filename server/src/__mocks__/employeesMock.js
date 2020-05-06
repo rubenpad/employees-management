@@ -11,7 +11,7 @@ const employeesMock = [
     updatedAt: '08/11/2008',
     city: 'Quintãs',
     projectCategoryId: '5eac1de0fc13ae56ea000010',
-    companyId: '5eac1de0fc13ae56ea000011'
+    companyId: '74dbaaae-6ec6-46b0-993d-94e630f33750'
   },
   {
     id: '5eac1de0fc13ae56ea000012',
@@ -25,7 +25,7 @@ const employeesMock = [
     updatedAt: '24/02/2017',
     city: 'Kallar Kahār',
     projectCategoryId: '5eac1de0fc13ae56ea000010',
-    companyId: '5eac1de0fc13ae56ea000011'
+    companyId: '74dbaaae-6ec6-46b0-993d-94e630f33750'
   },
   {
     id: '5eac1de0fc13ae56ea000015',
@@ -39,7 +39,7 @@ const employeesMock = [
     updatedAt: '04/05/2000',
     city: 'Santa Ana',
     projectCategoryId: '5eac1de0fc13ae56ea000016',
-    companyId: '5eac1de0fc13ae56ea000017'
+    companyId: '5eac1de0fc13ae56ea000011'
   },
   {
     id: '5eac1de0fc13ae56ea000018',

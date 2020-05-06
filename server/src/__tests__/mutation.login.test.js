@@ -2,41 +2,30 @@
 
 const resolvers = require('../graphql/resolvers')
 const mockContext = require('../__mocks__/mockContext')
-const {
-  hashedPassword,
-  fakeCompany,
-  fakeToken,
-  companyId
-} = require('../__mocks__/utils')
+const { fakeCompany, hashedPassword, fakeToken } = require('../__mocks__/utils')
 
 const { getCompany } = mockContext.dataSources.companyAPI
 
-describe('Mutation.login', () => {
-  beforeEach(() => {
-    getCompany.mockClear()
-  })
+describe('[Mutation.login]', () => {
+  const storedCompany = { ...fakeCompany, password: hashedPassword, id: 1 }
 
-  test('Should allow logging with a registered user', async () => {
-    const storedCompany = {
-      ...fakeCompany,
-      password: hashedPassword,
-      _id: companyId
-    }
+  test('Should allow logging with a registered user company', async () => {
     getCompany.mockResolvedValueOnce(storedCompany)
 
     const response = await resolvers.Mutation.login(
       null,
-      { input: fakeCompany },
+      {
+        input: fakeCompany
+      },
       mockContext
     )
 
     expect(getCompany).toHaveBeenCalledTimes(1)
     expect(getCompany).toHaveBeenCalledWith({ email: fakeCompany.email })
-
     expect(response).toEqual(fakeToken)
   })
 
-  test('Should returns an error when try to login with a no registered user', async () => {
+  test('Should raise an error when try to logging with a no registered user company', async () => {
     try {
       await resolvers.Mutation.login(
         null,
@@ -56,7 +45,7 @@ describe('Mutation.login', () => {
   })
 
   test('Should returns an error when password is wrong', async () => {
-    getCompany.mockResolvedValueOnce(fakeCompany)
+    getCompany.mockResolvedValueOnce(storedCompany)
 
     try {
       await resolvers.Mutation.login(

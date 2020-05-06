@@ -2,17 +2,17 @@
 
 const resolvers = require('../graphql/resolvers')
 const mockContext = require('../__mocks__/mockContext')
-const categoriesMock = require('../__mocks__/categoriesMock')
-const { categoryId } = require('../__mocks__/utils')
-const { createCategory, getCategories } = mockContext.dataSources.categoryAPI
+const { categoryUuid } = require('../__mocks__/utils')
 
-const newCategory = { name: 'Civil Engineering' }
+const { createCategory } = mockContext.dataSources.categoryAPI
+
+const newCategory = { uuid: categoryUuid, name: 'Civil Engineering' }
 
 describe('[Mutation.createCategory]', () => {
   test('Should creates a new category with company user logged', async () => {
-    createCategory.mockReturnValueOnce(categoryId)
+    createCategory.mockResolvedValueOnce({ id: 1, ...newCategory })
 
-    const createdCategoryId = await resolvers.Mutation.createCategory(
+    const createdCategory = await resolvers.Mutation.createCategory(
       null,
       { input: newCategory },
       mockContext
@@ -20,7 +20,7 @@ describe('[Mutation.createCategory]', () => {
 
     expect(createCategory).toHaveBeenCalledTimes(1)
     expect(createCategory).toHaveBeenCalledWith({ category: newCategory })
-    expect(createdCategoryId).toEqual(categoryId)
+    expect(createdCategory).toEqual({ id: 1, ...newCategory })
   })
 
   test('Should fails when try to create a new category and no company user is logged', async () => {

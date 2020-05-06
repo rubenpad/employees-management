@@ -2,8 +2,9 @@
 
 module.exports = {
   company: {
-    // This is the company object created in the context
-    sub: '5eada8d4fc13ae01fc000000',
+    // This is the fake company object created in the context
+    // supposed to be logged
+    sub: '74dbaaae-6ec6-46b0-993d-94e630f33750',
     name: 'MGC',
     email: 'mgc@mail.com',
     iat: '12345678'
@@ -19,7 +20,6 @@ module.exports = {
     },
     categoryAPI: {
       getCategories: jest.fn(),
-      getCategoriesAndCompaniesId: jest.fn(),
       createCategory: jest.fn()
     }
   }
