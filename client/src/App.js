@@ -7,7 +7,8 @@ import Home from './containers/Home';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
 import Dashboard from './containers/Dashboard';
-import Register from './containers/Register';
+import NewEmployee from './containers/NewEmployee';
+import EditEmployee from './containers/EditEmployee';
 
 const App = ({ isAuth = true }) => (
   <BrowserRouter>
@@ -21,7 +22,12 @@ const App = ({ isAuth = true }) => (
         <Route
           exact
           path="/employees/new"
-          component={isAuth ? Register : Login}
+          component={isAuth ? NewEmployee : Login}
+        />
+        <Route
+          exact
+          path="/employees/edit"
+          component={isAuth ? EditEmployee : Login}
         />
       </Switch>
     </Layout>

@@ -1,14 +1,14 @@
 import React from 'react';
 
 import EmployeeForm from '../../components/Forms/EmployeeForm';
-import { RegisterContainer } from './styles';
+import { Container } from './styles';
 
-const Register = () => {
+const NewEmployee = () => {
   return (
-    <RegisterContainer>
+    <Container>
       <EmployeeForm title="Register a new employee" />
-    </RegisterContainer>
+    </Container>
   );
 };
 
-export default Register;
+export default NewEmployee;

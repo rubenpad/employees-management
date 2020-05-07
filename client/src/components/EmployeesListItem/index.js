@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Avatar from '../Avatar';
@@ -20,7 +21,7 @@ const EmployeesListItem = ({ employee }) => {
           </span>
         </Information>
         <Action>
-          <a href="/employees/edit">EDIT</a>
+          <Link to="/employees/edit">EDIT</Link>
           <button type="button">DELETE</button>
         </Action>
       </ItemContent>

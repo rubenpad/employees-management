@@ -5,6 +5,7 @@ export const ItemContainer = styled.div`
   width: 100%;
   margin: 12px 0;
   padding: 16px;
+  background: ${colors.white};
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.5s ease;
@@ -55,7 +56,7 @@ export const Action = styled.div`
 
   a {
     padding: 12px 16px;
-    background: ${colors.light};
+    background: ${colors.white};
     border: 1px solid ${colors.dark};
     font-weight: bold;
 
