@@ -57,6 +57,7 @@ export const Action = styled.div`
     padding: 12px 16px;
     background: ${colors.light};
     border: 1px solid ${colors.dark};
+    font-weight: bold;
 
     :hover {
       background: ${colors.dark};
@@ -66,14 +67,15 @@ export const Action = styled.div`
   }
 
   button {
-    background: ${colors.primary};
+    background: ${colors.error};
     color: ${colors.dark};
     cursor: pointer;
-    opacity: 0.9;
     transition: all 0.5s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
 
     :hover {
-      opacity: 1;
+      background: ${colors.error};
     }
   }
 `;

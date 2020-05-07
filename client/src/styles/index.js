@@ -7,7 +7,7 @@ export const fonts = {
 
 export const colors = {
   primary: '#5551ff',
-  secondary: '#29BE60',
+  secondary: '#e83d98',
   light: '#f6f7f9',
   white: '#ffffff',
   dark: '#15171a',
@@ -58,7 +58,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: ${fontSize[2]};
   }
 
-  input {
+  input, select {
     outline: 0;
     border: 0;
     border-radius: 2px

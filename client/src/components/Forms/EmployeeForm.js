@@ -32,7 +32,7 @@ const EmployeeForm = ({ title }) => {
             .email(`That email doesn't look right`)
             .required('Email address is required'),
           salary: Yup.number().min(4).required('Employee salary is required'),
-          birthDate: Yup.date().required('Please enter employee birth date'),
+          birthDate: Yup.date().required('Birth date is required'),
           city: Yup.string(),
           contractType: Yup.string()
             .oneOf(['fullTime', 'partTime'])
@@ -60,21 +60,24 @@ const EmployeeForm = ({ title }) => {
             id="birthDate"
             name="birthDate"
             type="text"
-            placeholder="dd/mm/yyyy"
+            placeholder="yyyy/mm/dd"
           />
 
           <Select label="Contract type" name="contractType">
+            <option value="">Select type of contract</option>
             <option value="fullTime">Full time</option>
             <option value="partTime">Part time</option>
           </Select>
 
           <Select label="City" name="city">
+            <option value="">Select a city</option>
             <option value="bogota">Bogotá</option>
             <option value="medellin">Medellin</option>
             <option value="villavicencio">Villavicencio</option>
           </Select>
 
           <Select label="Status" name="status">
+            <option value="">Select status of employee</option>
             <option value="activate">Active</option>
             <option value="inactive">Inactive</option>
           </Select>

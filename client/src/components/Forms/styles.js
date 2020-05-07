@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Form as form } from 'formik';
 import { Link as LinkRouter } from 'react-router-dom';
-import { colors } from '../../styles';
+import { colors, responsive } from '../../styles';
 
 export const Link = styled(LinkRouter)`
   margin-left: 16px;
@@ -37,6 +37,7 @@ export const FormContainerExtended = styled.div`
   grid-column: auto;
   justify-self: center;
   align-self: center;
+  margin: 24px 0 0 0;
 
   width: 100%;
   max-width: 480px;
@@ -52,45 +53,50 @@ export const FormContainerExtended = styled.div`
 export const LargeForm = styled(form)`
   display: grid;
   grid-gap: 4px;
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: 100%;
   grid-template-rows: auto;
 
-  [for='firstName'] {
-    grid-area: 1 / 1 / 2 / 2;
-  }
+  ${responsive.small`
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: auto;
 
-  [for='lastName'] {
-    grid-area: 1 / 2 / 2 / 3;
-  }
+    [for='firstName'] {
+     grid-area: 1 / 1 / 2 / 2;
+    }
 
-  [for='email'] {
-    grid-area: 2 / 1 / 3 / 2;
-  }
+    [for='lastName'] {
+     grid-area: 1 / 2 / 2 / 3;
+    }
 
-  [for='salary'] {
-    grid-area: 2 / 2 / 3 / 3;
-  }
+    [for='email'] {
+     grid-area: 2 / 1 / 3 / 2;
+    }
 
-  [for='birthDate'] {
-    grid-area: 3 / 1 / 4 / 2;
-  }
+    [for='salary'] {
+     grid-area: 2 / 2 / 3 / 3;
+    }
 
-  [for='contractType'] {
-    grid-area: 3 / 2 / 4 / 3;
-  }
+    [for='birthDate'] {
+     grid-area: 3 / 1 / 4 / 2;
+    }
 
-  [for='city'] {
-    grid-area: 4 / 1 / 5 / 2;
-  }
+    [for='contractType'] {
+     grid-area: 3 / 2 / 4 / 3;
+    }
 
-  [for='status'] {
-    grid-area: 4 / 2 / 5 / 3;
-  }
+    [for='city'] {
+     grid-area: 4 / 1 / 5 / 2;
+    }
 
-  button {
-    grid-area: 5 / 1 / 6 / 3;
-    align-self: center;
-  }
+    [for='status'] {
+     grid-area: 4 / 2 / 5 / 3;
+    }
+
+    button {
+     grid-area: 5 / 1 / 6 / 3;
+     align-self: center;
+    }
+  `}
 `;
 
 export const Form = styled(form)`
