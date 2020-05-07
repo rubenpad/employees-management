@@ -6,34 +6,26 @@ const { config } = require('../config')
 
 module.exports = {
   Query: {
-    getEmployees: async (_, __, { dataSources, company }) => {
+    employees: async (_, __, { dataSources, company }) => {
       // Check if company user exists in the context. If not returns error
       if (!company) {
         throw new Error('You must be logged to perform this action')
       }
 
-      // When token is signed _id company property becomes sub
-      // see login resolver
-      const companyId = company.sub
-
       const employees = await dataSources.employeeAPI.getEmployees({
-        companyId
+        companyId: company.sub
       })
 
       return employees
     },
-    getCategories: async (_, __, { dataSources, company }) => {
+    categories: async (_, __, { dataSources, company }) => {
       // Check if company user exists in the context. If not returns error
       if (!company) {
         throw new Error('You must be logged to perform this action')
       }
 
-      // When token is signed _id company property becomes sub
-      // see login resolver
-      const companyId = company.sub
-
       const categories = await dataSources.categoryAPI.getCategories({
-        companyId
+        companyId: company.sub
       })
 
       return categories
@@ -58,7 +50,7 @@ module.exports = {
 
       const token = jwt.sign(
         {
-          sub: company.uuid,
+          sub: company.id,
           name: company.name,
           email: company.email
         },
@@ -74,41 +66,74 @@ module.exports = {
       })
 
       if (createdCompany === null) {
-        throw new Error('Company email is already in use')
+        return {
+          success: false,
+          error: true,
+          message: 'Company email is already in use'
+        }
       }
 
-      const newCompany = {
-        sub: createdCompany.uuid,
-        name: input.name,
-        email: input.email
+      return {
+        success: true,
+        error: false,
+        message: 'Created successfully'
       }
-      const token = jwt.sign(newCompany, config.secret)
-
-      return token
     },
     createEmployee: async (_, { input }, { dataSources, company }) => {
       if (!company) {
-        throw new Error('You must be logged to perform this action')
+        return {
+          success: false,
+          error: true,
+          message: 'You must be logged to perform this action'
+        }
       }
 
       const createdEmployee = await dataSources.employeeAPI.createEmployee({
         employee: { ...input, companyId: company.sub }
       })
 
-      return createdEmployee
+      if (createdEmployee === null) {
+        return {
+          success: false,
+          error: true,
+          message: 'Employee email is already in use'
+        }
+      }
+
+      return {
+        success: true,
+        error: false,
+        message: 'Employee created successfully'
+      }
     },
     updateEmployee: () => {},
     deleteEmployee: () => {},
     createCategory: async (_, { input }, { dataSources, company }) => {
       if (!company) {
-        throw new Error('You must be logged to perform this action')
+        return {
+          success: false,
+          error: true,
+          message: 'You must be logged to perform this action'
+        }
       }
 
-      const createdCategoryId = await dataSources.categoryAPI.createCategory({
-        category: input
+      const createdCategory = await dataSources.categoryAPI.createCategory({
+        category: { ...input, companyId: company.sub }
       })
 
-      return createdCategoryId
+      if (createdCategory === null) {
+        return {
+          success: false,
+          error: true,
+          message: 'Try again'
+        }
+      }
+
+      return {
+        success: true,
+        error: false,
+        message: 'Category created successfully'
+      }
     },
     updateCategory: () => {},
     deleteCategory: () => {}

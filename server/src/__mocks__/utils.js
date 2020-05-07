@@ -7,12 +7,11 @@ const { config } = require('../config')
 const hashedPassword =
   '$2b$10$v6KrB3BkAIgsei7.o2t9.eItzfK2Zf7sloAGW12d5O.co4.OVdPX2'
 
-const companyUuid = '74dbaaae-6ec6-46b0-993d-94e630f33750'
-const categoryUuid = '74dbaaae-6ec6-46b0-993d-94e630f33752'
-const employeeUuid = '74dbaaae-6ec6-46b0-993d-94e630f33753'
+const companyId = 1
+const categoryId = 2
+const employeeId = 3
 
 const fakeCompany = {
-  uuid: '74dbaaae-6ec6-46b0-993d-94e630f33750',
   name: 'MGC',
   email: 'mgc@mail.com',
   password: 'secret'
@@ -21,7 +20,7 @@ const fakeCompany = {
 // Sign token to make tests
 const fakeToken = jwt.sign(
   {
-    sub: fakeCompany.uuid,
+    sub: companyId,
     name: fakeCompany.name,
     email: fakeCompany.email
   },
@@ -29,9 +28,9 @@ const fakeToken = jwt.sign(
 )
 
 module.exports = {
-  companyUuid,
-  categoryUuid,
-  employeeUuid,
+  companyId,
+  categoryId,
+  employeeId,
   hashedPassword,
   fakeCompany,
   fakeToken

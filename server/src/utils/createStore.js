@@ -1,27 +1,24 @@
 'use strict'
 
 const Sequelize = require('sequelize')
+const { config } = require('../config')
 
 function createStore() {
   const database = new Sequelize({
-    dialect: 'sqlite',
-    storage: './store.sqlite'
+    ...config.db
   })
 
-  const company = database.define('company', {
-    uuid: Sequelize.STRING,
+  const companies = database.define('company', {
     name: Sequelize.STRING,
     email: Sequelize.STRING,
     password: Sequelize.STRING
   })
 
-  const category = database.define('category', {
-    uuid: Sequelize.STRING,
+  const categories = database.define('category', {
     name: Sequelize.STRING
   })
 
-  const employee = database.define('employee', {
-    uuid: Sequelize.STRING,
+  const employees = database.define('employee', {
     firstName: Sequelize.STRING,
     lastName: Sequelize.STRING,
     email: Sequelize.STRING,
@@ -32,11 +29,11 @@ function createStore() {
     contractType: Sequelize.STRING
   })
 
-  company.hasMany(category)
-  company.hasMany(employee)
-  employee.hasOne(category)
+  companies.hasMany(categories)
+  companies.hasMany(employees)
+  categories.hasOne(employees)
 
-  return { company, category, employee }
+  return { database, companies, categories, employees }
 }
 
 module.exports = { createStore }

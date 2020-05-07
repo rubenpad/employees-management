@@ -4,7 +4,7 @@ module.exports = {
   company: {
     // This is the fake company object created in the context
     // supposed to be logged
-    sub: '74dbaaae-6ec6-46b0-993d-94e630f33750',
+    sub: 1,
     name: 'MGC',
     email: 'mgc@mail.com',
     iat: '12345678'

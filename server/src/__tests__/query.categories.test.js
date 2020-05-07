@@ -4,19 +4,19 @@ const resolvers = require('../graphql/resolvers')
 
 const mockContext = require('../__mocks__/mockContext')
 const categoriesMock = require('../__mocks__/categoriesMock')
-const { companyUuid } = require('../__mocks__/utils')
+const { companyId } = require('../__mocks__/utils')
 
 const { getCategories } = mockContext.dataSources.categoryAPI
 
 const categories = categoriesMock.filter((category) => {
-  return category.companyId === companyUuid
+  return category.companyId === companyId
 })
 
 describe('[Query.categories]', () => {
   test('Should returns the project categories from logged company', async () => {
     getCategories.mockReturnValueOnce(categories)
 
-    const categoriesResponse = await resolvers.Query.getCategories(
+    const categoriesResponse = await resolvers.Query.categories(
       null,
       {},
       mockContext
@@ -28,7 +28,7 @@ describe('[Query.categories]', () => {
 
   test('Should raise an error if there is not a user company logged', async () => {
     try {
-      await resolvers.Query.getCategories(
+      await resolvers.Query.categories(
         null,
         {},
         { ...mockContext, company: null }

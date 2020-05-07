@@ -1,6 +1,7 @@
 'use strict'
 
 const { DataSource } = require('apollo-datasource')
+const bcrypt = require('bcrypt')
 
 class CompanyAPI extends DataSource {
   constructor({ store }) {
@@ -11,7 +12,7 @@ class CompanyAPI extends DataSource {
   async getCompany({ email }) {
     const company = await this.store.companies.findOne({ where: { email } })
 
-    return company || {}
+    return company
   }
 
   async createCompany({ company }) {
@@ -21,12 +22,13 @@ class CompanyAPI extends DataSource {
      * values the resource created and a boolean indicating if the resource
      * was created or not.
      */
-    const [company, created] = await this.store.companies.findOrCreate({
+    const hashedPassword = await bcrypt.hash(company.password, 10)
+    const [createdCompany, created] = await this.store.companies.findOrCreate({
       where: { email: company.email },
-      defaults: { ...company }
+      defaults: { ...company, password: hashedPassword }
     })
 
-    return created ? company : null
+    return created ? createdCompany : null
   }
 }
 
