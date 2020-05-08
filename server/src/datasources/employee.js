@@ -32,6 +32,14 @@ class EmployeeAPI extends DataSource {
 
     return updatedEmployee ? updatedEmployee : null
   }
+
+  async deleteEmployee({ id }) {
+    const deletedEmployee = await this.store.employees.destroy({
+      where: { id }
+    })
+
+    return deletedEmployee ? deletedEmployee : null
+  }
 }
 
 module.exports = EmployeeAPI

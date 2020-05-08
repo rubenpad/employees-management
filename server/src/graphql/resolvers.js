@@ -135,7 +135,33 @@ module.exports = {
         message: 'Employee updated successfully'
       }
     },
-    deleteEmployee: () => {},
+    deleteEmployee: async (_, { id }, { dataSources, company }) => {
+      if (!company) {
+        return {
+          success: false,
+          error: true,
+          message: 'You must be logged to perform this action'
+        }
+      }
+
+      const deletedEmployee = await dataSources.employeeAPI.deleteEmployee({
+        id
+      })
+
+      if (deletedEmployee === null) {
+        return {
+          success: false,
+          error: true,
+          message: `Couldn't delete employee`
+        }
+      }
+
+      return {
+        success: true,
+        error: false,
+        message: 'Employee deleted successfully'
+      }
+    },
     createCategory: async (_, { input }, { dataSources, company }) => {
       if (!company) {
         return {

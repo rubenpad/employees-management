@@ -12,6 +12,18 @@ const companyId = 1
 const categoryId = 2
 const employeeId = 3
 
+const fakeEmployee = {
+  firstName: 'Mark',
+  lastName: 'Manson',
+  email: 'manson@mail.com',
+  salary: 4000,
+  birthDate: '2000/05/12',
+  city: 'Bogotá',
+  isActive: true,
+  categoryId: 1,
+  contractType: 'full time'
+}
+
 const fakeCompany = {
   name: 'MGC',
   email: 'mgc@mail.com',
@@ -35,5 +47,6 @@ module.exports = {
   employeeId,
   hashedPassword,
   fakeCompany,
-  fakeToken
+  fakeToken,
+  fakeEmployee
 }
