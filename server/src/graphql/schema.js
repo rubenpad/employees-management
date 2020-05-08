@@ -46,9 +46,10 @@ const typeDefs = gql`
     email: String!
     salary: Int!
     birthDate: String!
-    category: String!
     city: String!
+    status: String!
     contractType: String!
+    categoryId: Int!
   }
 
   type Query {

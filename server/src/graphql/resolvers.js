@@ -54,7 +54,8 @@ module.exports = {
           name: company.name,
           email: company.email
         },
-        config.secret
+        config.secret,
+        { expiresIn: '1h' }
       )
 
       return token

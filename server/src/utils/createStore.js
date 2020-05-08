@@ -71,7 +71,8 @@ function createStore() {
       allowNull: false
     },
     status: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     city: {
       type: DataTypes.STRING,
@@ -96,12 +97,23 @@ function createStore() {
     { timestamps: false }
   )
 
+  // Companies - employees relation
+  companies.hasMany(employees)
+  employees.belongsTo(companies)
+
+  // Categories - employees relation
+  categories.hasMany(employees)
+  employees.belongsTo(categories)
+
+  // Many to Many relation between companies and categories
   companies.belongsToMany(categories, { through: companiesCategories })
   categories.belongsToMany(companies, { through: companiesCategories })
   companies.hasMany(companiesCategories)
   companiesCategories.belongsTo(companies)
   categories.hasMany(companiesCategories)
   companiesCategories.belongsTo(categories)
+
+  // database.sync({ force: true })
 
   return { database, companies, categories, employees, companiesCategories }
 }

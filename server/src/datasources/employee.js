@@ -17,14 +17,9 @@ class EmployeeAPI extends DataSource {
   }
 
   async createEmployee({ employee }) {
-
-    console.log(employee.category)
-    const category = await this.store.categories.findOne({
-      where: { name: employee.category }
-    })
     const [createdEmployee, created] = await this.store.employees.findOrCreate({
       where: { email: employee.email },
-      defaults: { ...employee, categoryId: category.id }
+      defaults: { ...employee }
     })
 
     return created ? createdEmployee : null

@@ -24,7 +24,8 @@ const fakeToken = jwt.sign(
     name: fakeCompany.name,
     email: fakeCompany.email
   },
-  config.secret
+  config.secret,
+  { expiresIn: '1h' }
 )
 
 module.exports = {
