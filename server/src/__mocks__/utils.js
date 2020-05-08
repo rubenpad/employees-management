@@ -1,6 +1,7 @@
 'use strict'
 
 const jwt = require('jsonwebtoken')
+const faker = require('faker')
 const { config } = require('../config')
 // Fake data to test purposes
 

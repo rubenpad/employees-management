@@ -107,7 +107,34 @@ module.exports = {
         message: 'Employee created successfully'
       }
     },
-    updateEmployee: () => {},
+    updateEmployee: async (_, { id, input }, { dataSources, company }) => {
+      if (!company) {
+        return {
+          success: false,
+          error: true,
+          message: 'You must be logged to perform this action'
+        }
+      }
+
+      const updatedEmployee = await dataSources.employeeAPI.updateEmployee({
+        id,
+        employee: { ...input }
+      })
+
+      if (updatedEmployee === null) {
+        return {
+          success: false,
+          error: true,
+          message: `Couldn't make the update`
+        }
+      }
+
+      return {
+        success: true,
+        error: false,
+        message: 'Employee updated successfully'
+      }
+    },
     deleteEmployee: () => {},
     createCategory: async (_, { input }, { dataSources, company }) => {
       if (!company) {
