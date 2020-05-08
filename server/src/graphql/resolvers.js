@@ -179,7 +179,7 @@ module.exports = {
         return {
           success: false,
           error: true,
-          message: 'Try again'
+          message: `Couldn't create the category`
         }
       }
 
@@ -189,7 +189,60 @@ module.exports = {
         message: 'Category created successfully'
       }
     },
-    updateCategory: () => {},
-    deleteCategory: () => {}
+    updateCategory: async (_, { id, input }, { dataSources, company }) => {
+      if (!company) {
+        return {
+          success: false,
+          error: true,
+          message: 'You must be logged to perform this action'
+        }
+      }
+
+      const updatedCategory = await dataSources.categoryAPI.updateCategory({
+        id,
+        category: { ...input }
+      })
+
+      if (updatedCategory === null) {
+        return {
+          success: false,
+          error: true,
+          message: `Couldn't do the update`
+        }
+      }
+
+      return {
+        success: true,
+        error: false,
+        message: 'Category updated successfully'
+      }
+    },
+    deleteCategory: async (_, { id }, { dataSources, company }) => {
+      if (!company) {
+        return {
+          success: false,
+          error: true,
+          message: 'You must be logged to perform this action'
+        }
+      }
+
+      const deletedCategory = await dataSources.categoryAPI.deleteCategory({
+        id
+      })
+
+      if (deletedCategory === null) {
+        return {
+          success: false,
+          error: true,
+          message: `Couldn't delete category`
+        }
+      }
+
+      return {
+        success: true,
+        error: false,
+        message: 'Category deleted successfully'
+      }
+    }
   }
 }

@@ -39,6 +39,22 @@ class CategoryAPI extends DataSource {
 
     return created && relation ? createdCategory : null
   }
+
+  async updateCategory({ id, category }) {
+    const updatedCategory = await this.store.categories.update(category, {
+      where: { id }
+    })
+
+    return updatedCategory ? updatedCategory : null
+  }
+
+  async deleteCategory({ id }) {
+    const deletedCategory = await this.store.categories.destroy({
+      where: { id }
+    })
+
+    return deletedCategory ? deletedCategory : null
+  }
 }
 
 module.exports = CategoryAPI

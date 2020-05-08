@@ -22,7 +22,9 @@ module.exports = {
     },
     categoryAPI: {
       getCategories: jest.fn(),
-      createCategory: jest.fn()
+      createCategory: jest.fn(),
+      updateCategory: jest.fn(),
+      deleteCategory: jest.fn()
     }
   }
 }
