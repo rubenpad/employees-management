@@ -8,6 +8,10 @@ class CategoryAPI extends DataSource {
     this.store = store
   }
 
+  initialize({ context }) {
+    this.context = context
+  }
+
   async getCategories({ companyId }) {
     const categories = await this.store.categories.findAll({
       attributes: ['id', 'name'],
@@ -28,7 +32,12 @@ class CategoryAPI extends DataSource {
       }
     )
 
-    return created ? createdCategory : null
+    const relation = await this.store.companiesCategories.create({
+      categoryId: createdCategory.id,
+      companyId: this.context.company.sub
+    })
+
+    return created && relation ? createdCategory : null
   }
 }
 

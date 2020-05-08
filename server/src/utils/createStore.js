@@ -91,8 +91,7 @@ function createStore() {
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
-      },
-      selfGranted: DataTypes.BOOLEAN
+      }
     },
     { timestamps: false }
   )
