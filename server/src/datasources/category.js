@@ -10,7 +10,11 @@ class CategoryAPI extends DataSource {
 
   async getCategories({ companyId }) {
     const categories = await this.store.categories.findAll({
-      where: { companyId }
+      attributes: ['id', 'name'],
+      include: {
+        model: this.store.companiesCategories,
+        where: { companyId }
+      }
     })
 
     return categories || []

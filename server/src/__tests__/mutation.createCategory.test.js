@@ -24,7 +24,7 @@ describe('[Mutation.createCategory]', () => {
 
     expect(createCategory).toHaveBeenCalledTimes(1)
     expect(createCategory).toHaveBeenCalledWith({
-      category: { ...newCategory, companyId }
+      category: { ...newCategory }
     })
     expect(response).toEqual({
       success: true,

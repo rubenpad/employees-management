@@ -1,6 +1,6 @@
 'use strict'
 
-const Sequelize = require('sequelize')
+const { Sequelize, DataTypes } = require('sequelize')
 const { config } = require('../config')
 
 function createStore() {
@@ -9,31 +9,102 @@ function createStore() {
   })
 
   const companies = database.define('company', {
-    name: Sequelize.STRING,
-    email: Sequelize.STRING,
-    password: Sequelize.STRING
+    id: {
+      type: DataTypes.INTEGER(),
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   })
 
   const categories = database.define('category', {
-    name: Sequelize.STRING
+    id: {
+      type: DataTypes.INTEGER(),
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    }
   })
 
   const employees = database.define('employee', {
-    firstName: Sequelize.STRING,
-    lastName: Sequelize.STRING,
-    email: Sequelize.STRING,
-    salary: Sequelize.INTEGER,
-    birthDate: Sequelize.DATE,
-    status: Sequelize.STRING,
-    city: Sequelize.STRING,
-    contractType: Sequelize.STRING
+    id: {
+      type: DataTypes.INTEGER(),
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    salary: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    birthDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.STRING
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contractType: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   })
 
-  companies.hasMany(categories)
-  companies.hasMany(employees)
-  categories.hasOne(employees)
+  const companiesCategories = database.define(
+    'companies_categories',
+    {
+      id: {
+        type: DataTypes.INTEGER(),
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+      },
+      selfGranted: DataTypes.BOOLEAN
+    },
+    { timestamps: false }
+  )
 
-  return { database, companies, categories, employees }
+  companies.belongsToMany(categories, { through: companiesCategories })
+  categories.belongsToMany(companies, { through: companiesCategories })
+  companies.hasMany(companiesCategories)
+  companiesCategories.belongsTo(companies)
+  categories.hasMany(companiesCategories)
+  companiesCategories.belongsTo(categories)
+
+  return { database, companies, categories, employees, companiesCategories }
 }
 
 module.exports = { createStore }

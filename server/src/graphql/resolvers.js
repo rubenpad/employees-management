@@ -118,7 +118,7 @@ module.exports = {
       }
 
       const createdCategory = await dataSources.categoryAPI.createCategory({
-        category: { ...input, companyId: company.sub }
+        category: { ...input }
       })
 
       if (createdCategory === null) {
