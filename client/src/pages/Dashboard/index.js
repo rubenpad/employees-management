@@ -1,34 +1,40 @@
 import React, { useState, useMemo } from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
-import Sidebar from '../../components/Sidebar';
-import EmployeesList from '../../components/EmployeesList';
+import Loader from '../../components/Loader';
+import GetDashboardData from '../../containers/GetDashboardData';
 import { DashboardContainer } from './styles';
 
-const Dashboard = ({ employees, categories }) => {
-  const [checkedItems, setCheckedItems] = useState({});
-
-  const handleChange = event => {
-    // Destructuring properties from the event target
-    // in this case is about checkbox inputs
-    const { id, checked } = event.target;
-    setCheckedItems({ ...checkedItems, [id]: checked });
-  };
-
-  const filteredEmployees = employees.filter(employee => {
-    const { categoryId } = employee;
-    const keys = Object.keys(checkedItems);
-
-    if (keys.includes(categoryId) && checkedItems[categoryId] === true) {
-      return employee;
+const GET_DATA = gql`
+  query {
+    employees {
+      id
+      firstName
+      lastName
+      email
+      salary
+      status
+      city
     }
-  });
+
+    categories {
+      id
+      name
+    }
+  }
+`;
+
+const Dashboard = () => {
+  const { data, loading, error } = useQuery(GET_DATA);
+
+  if (loading) return <Loader />;
+
+  if (error) return <p>Error</p>;
 
   return (
     <DashboardContainer>
-      <Sidebar handleChange={handleChange} categories={categories} />
-      <EmployeesList
-        employees={filteredEmployees.length ? filteredEmployees : employees}
-      />
+      <GetDashboardData {...data} />
     </DashboardContainer>
   );
 };

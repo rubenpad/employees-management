@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Input, Select } from '../Inputs';
+import Loader from '../Loader';
 import { FormContainerExtended, LargeForm, Button } from './styles';
 
 const EmployeeForm = ({
@@ -44,7 +45,6 @@ const EmployeeForm = ({
           city: Yup.string(),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
           createOrUpdateEmployee({
             variables: {
               input: {
@@ -71,8 +71,8 @@ const EmployeeForm = ({
 
           <Select label="Status" name="status">
             <option value="">Select status of employee</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
           </Select>
 
           <Select label="Category" name="categoryId">
@@ -85,7 +85,7 @@ const EmployeeForm = ({
               ))}
           </Select>
           {error && <p>Oops! Something is wrong. Try again</p>}
-          {loading && <p>Loading...</p>}
+          {loading && <Loader />}
           <Button type="submit">{title}</Button>
         </LargeForm>
       </Formik>

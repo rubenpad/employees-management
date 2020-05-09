@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Input } from '../Inputs';
+import Loader from '../Loader'
 import { FormContainer, Form, Button, Link } from './styles';
 
 const LoginForm = ({ login, loading, error }) => {
@@ -39,7 +40,7 @@ const LoginForm = ({ login, loading, error }) => {
             name="password"
             type="password"
           />
-          {loading && <p>Loading...</p>}
+          {loading && <Loader />}
           <Button type="submit">Login</Button>
         </Form>
       </Formik>

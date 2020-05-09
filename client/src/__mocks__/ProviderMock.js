@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider, MockLink } from '@apollo/react-testing';
 import { GET_EMAIL } from '../components/Header';
 
 const mocks = [
@@ -17,7 +17,7 @@ const mocks = [
 ];
 
 const ProviderMock = props => (
-  <MockedProvider mocks={mocks} addTypename={false}>
+  <MockedProvider link={MockLink} mocks={mocks} addTypename={false}>
     <MemoryRouter>{props.children}</MemoryRouter>
   </MockedProvider>
 );

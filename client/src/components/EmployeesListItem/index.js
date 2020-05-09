@@ -12,10 +12,9 @@ const EmployeesListItem = ({ employee }) => {
         <Avatar email={employee.email} />
         <Information>
           <h2>{`${employee.firstName} ${employee.lastName}`}</h2>
-          <span>{employee.salary}</span>
+          <span>{`USD ${employee.salary}`}</span>
           <span>{employee.status}</span>
           <span>{employee.city}</span>
-          <span>{employee.contractType}</span>
         </Information>
         <Action>
           <Link to={`/employees/edit/${employee.id}`}>EDIT</Link>

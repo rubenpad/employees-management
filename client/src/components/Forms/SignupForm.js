@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Input } from '../Inputs';
+import Loader from '../Loader';
 import { FormContainer, Form, Button, Link } from './styles';
 
 const SignupForm = ({ loading, error, signup }) => {
@@ -44,7 +45,7 @@ const SignupForm = ({ loading, error, signup }) => {
             name="password"
             type="password"
           />
-          {loading ? <p>Loading...</p> : null}
+          {loading && <Loader />}
           <Button type="submit">Create account</Button>
         </Form>
       </Formik>

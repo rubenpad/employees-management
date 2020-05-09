@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
+import Loader from '../components/Loader';
 import EmployeeForm from '../components/Forms/EmployeeForm';
 
 const CREATE_EMPLOYEE = gql`
@@ -32,9 +33,9 @@ const CreateEmployee = () => {
   });
 
   // Next are error and loading when fetching categories
-  if (error) return <p>Unexpected error</p>;
+  if (loading) return <Loader />;
 
-  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Unexpected error</p>;
 
   return (
     <EmployeeForm
