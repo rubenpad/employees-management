@@ -11,7 +11,6 @@ import { typeDefs, resolvers } from './graphql/resolvers';
 const container = document.getElementById('root');
 const token = localStorage.getItem('token');
 const cache = new InMemoryCache();
-
 const client = new ApolloClient({
   cache,
   resolvers,

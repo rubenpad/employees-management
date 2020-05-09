@@ -1,11 +1,24 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 import { Input, Select } from '../Inputs';
 import { FormContainerExtended, LargeForm, Button } from './styles';
 
-const EmployeeForm = ({ title }) => {
+const GET_CATEGORIES = gql`
+  query {
+    categories {
+      id
+      name
+    }
+  }
+`;
+
+const EmployeeForm = ({ createOrUpdateEmployee, loading, error, title }) => {
+  const { data } = useQuery(GET_CATEGORIES);
+
   return (
     <FormContainerExtended>
       <h2>{title}</h2>
@@ -15,9 +28,8 @@ const EmployeeForm = ({ title }) => {
           lastName: '',
           email: '',
           salary: '',
-          birthDate: '',
           city: '',
-          contractType: '',
+          categoryId: '',
         }}
         validationSchema={Yup.object({
           firstName: Yup.string()
@@ -32,17 +44,19 @@ const EmployeeForm = ({ title }) => {
             .email(`That email doesn't look right`)
             .required('Email address is required'),
           salary: Yup.number().min(4).required('Employee salary is required'),
-          birthDate: Yup.date().required('Birth date is required'),
           city: Yup.string(),
-          contractType: Yup.string()
-            .oneOf(['fullTime', 'partTime'])
-            .required('Contract type is required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
+          console.log(values);
+          createOrUpdateEmployee({
+            variables: {
+              input: {
+                ...values,
+                categoryId: Number.parseInt(values.categoryId),
+              },
+            },
           });
+          setSubmitting(false);
         }}
       >
         <LargeForm>
@@ -55,32 +69,26 @@ const EmployeeForm = ({ title }) => {
           <Input label="Last name" id="lastName" name="lastName" type="text" />
           <Input label="Email" id="email" name="email" type="email" />
           <Input label="Salary" id="salary" name="salary" type="number" />
-          <Input
-            label="Birth date"
-            id="birthDate"
-            name="birthDate"
-            type="text"
-            placeholder="yyyy/mm/dd"
-          />
 
-          <Select label="Contract type" name="contractType">
-            <option value="">Select type of contract</option>
-            <option value="fullTime">Full time</option>
-            <option value="partTime">Part time</option>
-          </Select>
-
-          <Select label="City" name="city">
-            <option value="">Select a city</option>
-            <option value="bogota">Bogotá</option>
-            <option value="medellin">Medellin</option>
-            <option value="villavicencio">Villavicencio</option>
-          </Select>
+          <Input label="City" id="city" name="city" type="text" />
 
           <Select label="Status" name="status">
             <option value="">Select status of employee</option>
-            <option value="activate">Active</option>
+            <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </Select>
+
+          <Select label="Category" name="categoryId">
+            <option value="">Select a category</option>
+            {data &&
+              data.categories.map(category => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+          </Select>
+          {error && <p>Oops! Something is wrong. Try again</p>}
+          {loading && <p>Loading...</p>}
           <Button type="submit">{title}</Button>
         </LargeForm>
       </Formik>

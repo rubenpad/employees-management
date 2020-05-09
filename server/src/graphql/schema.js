@@ -11,14 +11,14 @@ const typeDefs = gql`
 
   type Employee {
     id: ID!
-    firstName: String!
-    lastName: String!
-    email: String!
-    salary: Int!
-    city: String!
-    status: String!
-    categoryId: ID!
-    companyId: ID!
+    firstName: String
+    lastName: String
+    email: String
+    salary: Int
+    city: String
+    status: String
+    categoryId: ID
+    companyId: ID
   }
 
   type Category {

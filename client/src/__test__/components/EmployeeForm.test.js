@@ -1,12 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import EmployeeForm from '../../components/Forms/EmployeeForm';
+import ProviderMock from '../../__mocks__/ProviderMock';
 
 describe('EmployeeForm component tests', () => {
   let employeeForm = null;
 
   beforeEach(() => {
-    employeeForm = mount(<EmployeeForm title="Register a new employee" />);
+    employeeForm = mount(
+      <ProviderMock>
+        <EmployeeForm title="Register a new employee" />
+      </ProviderMock>
+    );
   });
 
   test('Should renders the EmployeeForm component', () => {
@@ -19,9 +24,9 @@ describe('EmployeeForm component tests', () => {
   });
 
   test('Should renders the inputs needed to register the employee with its respective label tag', () => {
-    expect(employeeForm.find('label')).toHaveLength(8);
+    expect(employeeForm.find('label')).toHaveLength(7);
     expect(employeeForm.find('input')).toHaveLength(5);
-    expect(employeeForm.find('select')).toHaveLength(3);
+    expect(employeeForm.find('select')).toHaveLength(2);
   });
 
   test('Should renders the submit button', () => {

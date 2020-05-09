@@ -14,8 +14,6 @@ const GET_DATA = gql`
       salary
       status
       city
-      contractType
-      categoryId
     }
 
     categories {
