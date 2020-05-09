@@ -17,8 +17,6 @@ const typeDefs = gql`
     salary: Int!
     city: String!
     status: String!
-    birthDate: String!
-    contractType: String!
     categoryId: ID!
     companyId: ID!
   }
@@ -44,10 +42,8 @@ const typeDefs = gql`
     lastName: String!
     email: String!
     salary: Int!
-    birthDate: String!
     city: String!
     status: String!
-    contractType: String!
     categoryId: Int!
   }
 

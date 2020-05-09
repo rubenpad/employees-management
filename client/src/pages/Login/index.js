@@ -17,9 +17,9 @@ const LOGIN = gql`
 const Login = () => {
   const client = useApolloClient();
   const [login, { loading, error }] = useMutation(LOGIN, {
-    onCompleted({ token, email }) {
-      localStorage.setItem('token', token);
-      client.writeData({ data: { isLoggedIn: true, email } });
+    onCompleted({ login }) {
+      localStorage.setItem('token', login.token);
+      client.writeData({ data: { isLoggedIn: true, email: login.email } });
     },
   });
 

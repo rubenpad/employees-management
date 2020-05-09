@@ -8,7 +8,7 @@ import Layout from './components/Layout';
 import Main from './pages/Main';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
+import GetDashboardData from './containers/GetDashboardData';
 import NewEmployee from './pages/NewEmployee';
 import EditEmployee from './pages/EditEmployee';
 
@@ -33,7 +33,7 @@ const App = () => {
           <Route
             exact
             path="/employees"
-            component={isAuth ? Dashboard : Login}
+            component={isAuth ? GetDashboardData : Login}
           />
           <Route
             exact

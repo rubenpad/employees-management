@@ -66,19 +66,11 @@ function createStore() {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    birthDate: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
     status: {
       type: DataTypes.STRING,
       allowNull: false
     },
     city: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    contractType: {
       type: DataTypes.STRING,
       allowNull: false
     }

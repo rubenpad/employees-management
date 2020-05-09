@@ -4,32 +4,30 @@ import Sidebar from '../../components/Sidebar';
 import EmployeesList from '../../components/EmployeesList';
 import { DashboardContainer } from './styles';
 
-import employeesMock from '../../__mocks__/employeesMock';
-
-const Dashboard = () => {
+const Dashboard = ({ employees, categories }) => {
   const [checkedItems, setCheckedItems] = useState({});
 
   const handleChange = event => {
     // Destructuring properties from the event target
     // in this case is about checkbox inputs
-    const { name, checked } = event.target;
-    setCheckedItems({ ...checkedItems, [name]: checked });
+    const { id, checked } = event.target;
+    setCheckedItems({ ...checkedItems, [id]: checked });
   };
 
-  const filteredEmployees = employeesMock.filter(employee => {
-    const { category } = employee;
+  const filteredEmployees = employees.filter(employee => {
+    const { categoryId } = employee;
     const keys = Object.keys(checkedItems);
 
-    if (keys.includes(category) && checkedItems[category] === true) {
+    if (keys.includes(categoryId) && checkedItems[categoryId] === true) {
       return employee;
     }
   });
 
   return (
     <DashboardContainer>
-      <Sidebar handleChange={handleChange} />
+      <Sidebar handleChange={handleChange} categories={categories} />
       <EmployeesList
-        employees={filteredEmployees.length ? filteredEmployees : employeesMock}
+        employees={filteredEmployees.length ? filteredEmployees : employees}
       />
     </DashboardContainer>
   );
