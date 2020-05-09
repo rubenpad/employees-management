@@ -44,7 +44,6 @@ const SignupForm = ({ loading, error, signup }) => {
             name="password"
             type="password"
           />
-          {error ? <p>{error.message}</p> : null}
           {loading ? <p>Loading...</p> : null}
           <Button type="submit">Create account</Button>
         </Form>

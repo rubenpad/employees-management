@@ -40,6 +40,7 @@
     "yup": "0.28.5"
   },
   "devDependencies": {
+    "@apollo/react-testing": "3.1.4",
     "@babel/core": "7.9.0",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@babel/preset-env": "7.9.0",
@@ -59,6 +60,7 @@
     "file-loader": "6.0.0",
     "html-webpack-plugin": "4.0.4",
     "jest": "25.2.7",
+    "node-fetch": "2.6.0",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"

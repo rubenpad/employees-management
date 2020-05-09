@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Input } from '../Inputs';
 import { FormContainer, Form, Button, Link } from './styles';
 
-const LoginForm = () => {
+const LoginForm = ({ login, loading, error }) => {
   return (
     <FormContainer>
       <h2>Login</h2>
@@ -21,10 +21,8 @@ const LoginForm = () => {
           password: Yup.string().required('Please enter your password'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          login({ variables: { input: { ...values } } });
+          setSubmitting(false);
         }}
       >
         <Form>
@@ -41,6 +39,7 @@ const LoginForm = () => {
             name="password"
             type="password"
           />
+          {loading && <p>Loading...</p>}
           <Button type="submit">Login</Button>
         </Form>
       </Formik>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
+import ProviderMock from '../../__mocks__/ProviderMock';
 import Header from '../../components/Header';
 import Avatar from '../../components/Avatar';
 
@@ -9,9 +9,9 @@ describe('Header component tests', () => {
 
   beforeEach(() => {
     header = mount(
-      <MemoryRouter>
+      <ProviderMock>
         <Header />
-      </MemoryRouter>
+      </ProviderMock>
     );
   });
 

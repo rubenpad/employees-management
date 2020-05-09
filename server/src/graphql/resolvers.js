@@ -58,7 +58,10 @@ module.exports = {
         { expiresIn: '1h' }
       )
 
-      return token
+      return {
+        email,
+        token
+      }
     },
 
     signup: async (_, { input }, { dataSources }) => {

@@ -62,8 +62,13 @@ const typeDefs = gql`
     message: String
   }
 
+  type loginResponse {
+    token: String!
+    email: String!
+  }
+
   type Mutation {
-    login(input: CompanyCredentials!): String!
+    login(input: CompanyCredentials!): loginResponse!
     signup(input: CompanyCredentials!): Response!
     createEmployee(input: EmployeeInput!): Response!
     updateEmployee(id: ID!, input: EmployeeInput): Response!

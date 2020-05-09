@@ -22,7 +22,7 @@ describe('[Mutation.login]', () => {
 
     expect(getCompany).toHaveBeenCalledTimes(1)
     expect(getCompany).toHaveBeenCalledWith({ email: fakeCompany.email })
-    expect(response).toEqual(fakeToken)
+    expect(response).toEqual({ token: fakeToken, email: fakeCompany.email })
   })
 
   test('Should raise an error when try to logging with a no registered user company', async () => {

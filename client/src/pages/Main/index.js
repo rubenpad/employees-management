@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeContainer, HomeContent, Link, Menu } from './styles';
+import { MainContainer, MainContent, Link, Menu } from './styles';
 
 const Main = () => (
   <MainContainer>
