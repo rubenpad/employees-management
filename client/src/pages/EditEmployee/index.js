@@ -1,12 +1,18 @@
 import React from 'react';
 
-import EmployeeForm from '../../components/Forms/EmployeeForm';
+import UpdateEmployee from '../../containers/UpdateEmployee';
 import { Container } from './styles';
 
-const EditEmployee = () => {
+const EditEmployee = props => {
+  const {
+    match: {
+      params: { id },
+    },
+  } = props;
+
   return (
     <Container>
-      <EmployeeForm title="Edit employee data" />
+      <UpdateEmployee id={id} />
     </Container>
   );
 };

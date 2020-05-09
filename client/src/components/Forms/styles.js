@@ -69,23 +69,19 @@ export const LargeForm = styled(form)`
     }
 
     [for='email'] {
-     grid-area: 2 / 1 / 3 / 2;
+     grid-area: 2 / 1 / 3 / 3;
     }
 
     [for='salary'] {
-     grid-area: 2 / 2 / 3 / 3;
-    }
-
-    [for='birthDate'] {
      grid-area: 3 / 1 / 4 / 2;
     }
 
-    [for='contractType'] {
+    [for='city'] {
      grid-area: 3 / 2 / 4 / 3;
     }
 
-    [for='city'] {
-     grid-area: 4 / 1 / 5 / 2;
+    [for='categoryId'] {
+      grid-area: 4 / 1 / 5 / 2;
     }
 
     [for='status'] {

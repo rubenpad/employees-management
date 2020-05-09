@@ -2,7 +2,19 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import EmployeesList from '../../components/EmployeesList';
-import employeesMock from '../../__mocks__/employeesMock';
+
+const employeesMock = [
+  {
+    id: 1,
+    firstName: 'Mark',
+    lastName: 'Manson',
+    email: 'manson@mail.com',
+    salary: 4000,
+    status: 'Active',
+    city: 'New York',
+    companyId: 1,
+  },
+];
 
 describe('EmployeesList component tests', () => {
   let employeesList;

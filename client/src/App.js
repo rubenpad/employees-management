@@ -42,7 +42,7 @@ const App = () => {
           />
           <Route
             exact
-            path="/employees/edit"
+            path="/employees/edit/:id"
             component={isAuth ? EditEmployee : Login}
           />
         </Switch>

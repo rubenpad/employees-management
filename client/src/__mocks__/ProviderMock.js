@@ -1,36 +1,25 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloClient } from 'apollo-client';
-import { ApolloProvider } from '@apollo/react-hooks';
-import fetch from 'node-fetch';
-import { typeDefs, resolvers } from '../graphql/resolvers';
+import { MockedProvider } from '@apollo/react-testing';
+import { GET_EMAIL } from '../components/Header';
 
-
-const token = localStorage.getItem('token');
-const cache = new InMemoryCache();
-const client = new ApolloClient({
-  cache,
-  typeDefs,
-  resolvers,
-  link: new HttpLink({
-    uri: '/graphql',
-    fetch,
-  }),
-});
-
-cache.writeData({
-  data: {
-    isLoggedIn: !!token,
-    email: '',
+const mocks = [
+  {
+    request: {
+      query: GET_EMAIL,
+    },
+    result: {
+      data: {
+        email: 'mail@mail.com',
+      },
+    },
   },
-});
+];
 
 const ProviderMock = props => (
-  <ApolloProvider client={client}>
+  <MockedProvider mocks={mocks} addTypename={false}>
     <MemoryRouter>{props.children}</MemoryRouter>
-  </ApolloProvider>
+  </MockedProvider>
 );
 
 export default ProviderMock;

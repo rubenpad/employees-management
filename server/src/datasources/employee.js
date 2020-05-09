@@ -16,6 +16,12 @@ class EmployeeAPI extends DataSource {
     return employees || []
   }
 
+  async getEmployee({ id }) {
+    const employee = await this.store.employees.findOne({ where: { id } })
+
+    return employee
+  }
+
   async createEmployee({ employee }) {
     const [createdEmployee, created] = await this.store.employees.findOrCreate({
       where: { email: employee.email },

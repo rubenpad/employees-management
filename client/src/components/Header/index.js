@@ -7,7 +7,7 @@ import Logo from '../../static/logo.png';
 import Avatar from '../Avatar';
 import { HeaderContainer, HeaderContent, LogoImage } from './styles';
 
-const GET_EMAIL = gql`
+export const GET_EMAIL = gql`
   query {
     email @client
   }
@@ -22,7 +22,7 @@ const Header = () => {
         <Link to="/">
           <LogoImage src={Logo} alt="Company Logo" />
         </Link>
-        <Avatar email={data.email} />
+        <Avatar email={data && data.email} />
       </HeaderContent>
     </HeaderContainer>
   );

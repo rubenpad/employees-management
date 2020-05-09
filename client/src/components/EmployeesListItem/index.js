@@ -18,7 +18,7 @@ const EmployeesListItem = ({ employee }) => {
           <span>{employee.contractType}</span>
         </Information>
         <Action>
-          <Link to="/employees/edit">EDIT</Link>
+          <Link to={`/employees/edit/${employee.id}`}>EDIT</Link>
           <button type="button">DELETE</button>
         </Action>
       </ItemContent>

@@ -6,6 +6,17 @@ const { config } = require('../config')
 
 module.exports = {
   Query: {
+    employee: async (_, { id }, { dataSources, company }) => {
+      if (!company) {
+        throw new Error('You must be logged to perform this action')
+      }
+
+      const employee = await dataSources.employeeAPI.getEmployee({
+        id
+      })
+
+      return employee
+    },
     employees: async (_, __, { dataSources, company }) => {
       // Check if company user exists in the context. If not returns error
       if (!company) {

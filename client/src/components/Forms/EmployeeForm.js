@@ -1,35 +1,32 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 
 import { Input, Select } from '../Inputs';
 import { FormContainerExtended, LargeForm, Button } from './styles';
 
-const GET_CATEGORIES = gql`
-  query {
-    categories {
-      id
-      name
-    }
-  }
-`;
-
-const EmployeeForm = ({ createOrUpdateEmployee, loading, error, title }) => {
-  const { data } = useQuery(GET_CATEGORIES);
-
+const EmployeeForm = ({
+  createOrUpdateEmployee,
+  data,
+  loading,
+  error,
+  title,
+}) => {
   return (
     <FormContainerExtended>
       <h2>{title}</h2>
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
-          salary: '',
-          city: '',
-          categoryId: '',
+          firstName: data && data.employee ? data.employee.firstName : '',
+          lastName: data && data.employee ? data.employee.lastName : '',
+          email: data && data.employee ? data.employee.email : '',
+          salary: data && data.employee ? data.employee.salary : '',
+          city: data && data.employee ? data.employee.city : '',
+          status: data && data.employee ? data.employee.status : '',
+          categoryId:
+            data && data.employee
+              ? Number.parseInt(data.employee.categoryId)
+              : '',
         }}
         validationSchema={Yup.object({
           firstName: Yup.string()

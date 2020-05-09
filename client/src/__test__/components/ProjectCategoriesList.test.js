@@ -1,14 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ProjectCategoriesList from '../../components/ProjectCategoriesList';
-import projectCategoriesMock from '../../__mocks__/projectCategoriesMock';
+
+const categoriesMock = [{ id: 1, name: 'Marketing' }];
 
 describe('ProjectCategoriesList tests', () => {
   let projectCategoriesList;
 
   beforeEach(() => {
     projectCategoriesList = mount(
-      <ProjectCategoriesList categories={projectCategoriesMock} />
+      <ProjectCategoriesList categories={categoriesMock} />
     );
   });
 
@@ -22,7 +23,7 @@ describe('ProjectCategoriesList tests', () => {
 
   test('Should renders the categories list', () => {
     expect(projectCategoriesList.find('ul').children()).toHaveLength(
-      projectCategoriesMock.length
+     categoriesMock.length
     );
   });
 });

@@ -48,6 +48,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    employee(id: ID!): Employee!
     employees: [Employee]!
     categories: [Category]!
   }
