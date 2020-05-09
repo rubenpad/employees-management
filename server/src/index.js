@@ -37,7 +37,7 @@ const server = new ApolloServer({
   dataSources,
   context,
   introspection: true,
-  playground: true
+  playground: config.dev ? true : false
 })
 const app = express()
 server.applyMiddleware({ app })

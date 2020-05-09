@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-import Login from '../../containers/Login';
+import Login from '../../pages/Login';
 import LoginForm from '../../components/Forms/LoginForm';
 
 describe('Login container tests', () => {

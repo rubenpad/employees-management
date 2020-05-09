@@ -15,13 +15,12 @@ const typeDefs = gql`
     lastName: String!
     email: String!
     salary: Int!
-    birthDate: String!
     city: String!
+    status: String!
+    birthDate: String!
     contractType: String!
     categoryId: ID!
     companyId: ID!
-    updatedAt: String
-    createdAt: String
   }
 
   type Category {

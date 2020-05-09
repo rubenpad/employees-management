@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link as LinkRouter } from 'react-router-dom';
 import { responsive, colors } from '../../styles/index';
 
-export const HomeContainer = styled.div`
+export const MainContainer = styled.div`
   width: 100%;
   height: 80vh;
   display: flex;
@@ -10,7 +10,7 @@ export const HomeContainer = styled.div`
   align-items: center;
 `;
 
-export const HomeContent = styled.div`
+export const MainContent = styled.div`
   width: 100%;
   height: 50%;
   display: grid;

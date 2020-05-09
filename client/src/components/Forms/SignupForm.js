@@ -5,18 +5,18 @@ import * as Yup from 'yup';
 import { Input } from '../Inputs';
 import { FormContainer, Form, Button, Link } from './styles';
 
-const SignupForm = () => {
+const SignupForm = ({ loading, error, signup }) => {
   return (
     <FormContainer>
       <h2>Sign up</h2>
       <Formik
         initialValues={{
-          companyName: '',
+          name: '',
           email: '',
           password: '',
         }}
         validationSchema={Yup.object({
-          companyName: Yup.string()
+          name: Yup.string()
             .min(3, 'Please enter a company name longer than three characters')
             .required('Company name is required'),
           email: Yup.string()
@@ -31,19 +31,12 @@ const SignupForm = () => {
             .required('Please enter a password'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          signup({ variables: { input: { ...values } } });
+          setSubmitting(false);
         }}
       >
         <Form>
-          <Input
-            label="Company Name"
-            id="companyName"
-            name="companyName"
-            type="text"
-          />
+          <Input label="Company Name" id="name" name="name" type="text" />
           <Input label="Email" id="email" name="email" type="email" />
           <Input
             label="Password"
@@ -51,7 +44,8 @@ const SignupForm = () => {
             name="password"
             type="password"
           />
-
+          {error ? <p>{error.message}</p> : null}
+          {loading ? <p>Loading...</p> : null}
           <Button type="submit">Create account</Button>
         </Form>
       </Formik>

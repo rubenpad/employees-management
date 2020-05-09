@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import NewEmployee from '../../containers/NewEmployee';
+import NewEmployee from '../../pages/NewEmployee';
 import EmployeeForm from '../../components/Forms/EmployeeForm';
 
 describe('Register container tests', () => {
