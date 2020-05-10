@@ -5,8 +5,12 @@ export const ListContainer = styled.div`
   position: sticky;
   top: 5px;
   width: 100%;
-  padding: 16px;
+  padding: 0;
   transition: all 0.3 ease;
+
+  ${responsive.small`
+    padding: 16px;
+  `}
 `;
 
 export const ListHeader = styled.div`
@@ -44,9 +48,10 @@ export const ListHeader = styled.div`
   label {
     user-select: none;
     cursor: pointer;
-    font-size: 28px;
-    transition: all 0.3s ease-in-out;
-    transform: rotate(-90deg);
+
+    svg {
+      width: 32px;
+    }
   }
 
   input {
@@ -55,7 +60,6 @@ export const ListHeader = styled.div`
     visibility: hidden;
 
     &:checked + label {
-      transform: rotate(90deg);
     }
   }
 

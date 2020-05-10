@@ -21,6 +21,12 @@ const client = new ApolloClient({
       authorization: token ? `Bearer ${token}` : '',
     },
   }),
+  onError: error => {
+    if (error && error.networkError.result.code === 'invalid_token') {
+      localStorage.clear();
+      window.location.href = '/login';
+    }
+  },
 });
 
 cache.writeData({
