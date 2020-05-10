@@ -5,8 +5,7 @@ const { config } = require('../config')
 
 function createStore() {
   const database = new Sequelize({
-    ...config.db,
-    logging: false
+    ...config.sqlite
   })
 
   const companies = database.define('company', {
@@ -105,8 +104,6 @@ function createStore() {
   companiesCategories.belongsTo(companies)
   categories.hasMany(companiesCategories)
   companiesCategories.belongsTo(categories)
-
-  // database.sync({ force: true })
 
   return { database, companies, categories, employees, companiesCategories }
 }
