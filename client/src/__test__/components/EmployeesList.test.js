@@ -2,6 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import EmployeesList from '../../components/EmployeesList';
+import ProviderMock from '../../__mocks__/ProviderMock';
 
 const employeesMock = [
   {
@@ -21,10 +22,9 @@ describe('EmployeesList component tests', () => {
 
   beforeEach(() => {
     employeesList = mount(
-      // See https://reacttraining.com/react-router/web/guides/testing
-      <MemoryRouter>
+      <ProviderMock>
         <EmployeesList employees={employeesMock} />
-      </MemoryRouter>
+      </ProviderMock>
     );
   });
 

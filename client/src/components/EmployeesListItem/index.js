@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Avatar from '../Avatar';
+import DeleteEmployee from '../../containers/DeleteEmployee';
 import { ItemContainer, ItemContent, Information, Action } from './styles';
 
 const EmployeesListItem = ({ employee }) => {
+  const [modalMode, setModalMode] = useState({ visible: false });
+  const openModal = () => setModalMode({ visible: true });
+  const closeModal = () => setModalMode({ visible: false });
+
   return (
     <ItemContainer>
       <ItemContent>
@@ -18,7 +23,15 @@ const EmployeesListItem = ({ employee }) => {
         </Information>
         <Action>
           <Link to={`/employees/edit/${employee.id}`}>EDIT</Link>
-          <button type="button">DELETE</button>
+          <button type="button" onClick={openModal}>
+            DELETE
+          </button>
+          <DeleteEmployee
+            employeeId={employee.id}
+            openModal={openModal}
+            closeModal={closeModal}
+            modalMode={modalMode.visible}
+          />
         </Action>
       </ItemContent>
     </ItemContainer>
