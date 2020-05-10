@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import useModal from '../../hooks/useModal';
 import Avatar from '../Avatar';
 import DeleteEmployee from '../../containers/DeleteEmployee';
 import { ItemContainer, ItemContent, Information, Action } from './styles';
 
 const EmployeesListItem = ({ employee }) => {
-  const [modalMode, setModalMode] = useState({ visible: false });
-  const openModal = () => setModalMode({ visible: true });
-  const closeModal = () => setModalMode({ visible: false });
+  const { mode, openModal, closeModal } = useModal();
 
   return (
     <ItemContainer>
@@ -30,7 +29,7 @@ const EmployeesListItem = ({ employee }) => {
             employeeId={employee.id}
             openModal={openModal}
             closeModal={closeModal}
-            modalMode={modalMode.visible}
+            modalMode={mode}
           />
         </Action>
       </ItemContent>

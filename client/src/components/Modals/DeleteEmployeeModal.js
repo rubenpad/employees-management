@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Modal from '../Modal';
+import Modal from './Modal';
 import Loader from '../Loader';
 import { ModalDelete, Button, Error } from './styles';
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import CategoryForm from '../components/Forms/CategoryForm';
+import CreateCategoryModal from '../components/Modals/CreateCategoryModal';
 
 const CREATE_CATEGORY = gql`
-  mutation($input: CategoryInput) {
+  mutation($input: CategoryInput!) {
     createCategory(input: $input) {
       success
       error
@@ -14,15 +14,21 @@ const CREATE_CATEGORY = gql`
   }
 `;
 
-const CreateCategory = () => {
-  const [createCategory, { loading, error }] = useMutation(CREATE_CATEGORY);
+const CreateCategory = ({ mode, openModal, closeModal }) => {
+  const [createCategory, { loading, error }] = useMutation(CREATE_CATEGORY, {
+    onCompleted(_) {
+      window.location.reload();
+    },
+  });
 
   return (
-    <CategoryForm
-      title="Create Category"
-      createOrUpdateCategory={createCategory}
+    <CreateCategoryModal
+      modalMode={mode}
+      openModal={openModal}
+      closeModal={closeModal}
       loading={loading}
       error={error}
+      createCategory={createCategory}
     />
   );
 };

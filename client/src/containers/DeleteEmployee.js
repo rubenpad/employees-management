@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import DeleteEmployeeModal from '../components/DeleteEmployeeModal';
+import DeleteEmployeeModal from '../components/Modals/DeleteEmployeeModal';
 
 const DELETE_EMPLOYEE = gql`
   mutation($id: ID!) {

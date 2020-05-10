@@ -1,30 +1,50 @@
 import styled, { css } from 'styled-components';
-import { responsive } from '../../styles/';
+import { colors, responsive } from '../../styles/';
 
 export const ListContainer = styled.div`
+  position: sticky;
+  top: 5px;
   width: 100%;
   padding: 16px;
   transition: all 0.3 ease;
-
-  position: sticky;
-  top: 5px;
 `;
 
 export const ListHeader = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  h2 {
-    width: 100%;
-    font-size: 20px;
-    text-transform: uppercase;
-    user-select: none;
+  div {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      width: 100%;
+      margin: 0 0 8px 0;
+      font-size: 20px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    button {
+      padding: 4px 8px;
+      background: ${colors.light};
+      border: 1px solid ${colors.black};
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &:hover {
+        background: ${colors.black};
+        color: ${colors.white};
+      }
+    }
   }
 
   label {
     user-select: none;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 28px;
     transition: all 0.3s ease-in-out;
     transform: rotate(-90deg);
   }

@@ -5,7 +5,8 @@ const { config } = require('../config')
 
 function createStore() {
   const database = new Sequelize({
-    ...config.db
+    ...config.db,
+    logging: false
   })
 
   const companies = database.define('company', {

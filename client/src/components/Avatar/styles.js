@@ -6,4 +6,5 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 `;

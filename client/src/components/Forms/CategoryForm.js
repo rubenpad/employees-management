@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { Input } from '../Inputs';
 import Loader from '../Loader';
-import { FormContainer, Form, Button, Link } from './styles';
+import { FormContainer, Form, Button } from './styles';
 
 const CategoryForm = ({ title, createOrUpdateCategory, loading, error }) => {
   return (
