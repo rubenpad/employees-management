@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -33,9 +34,14 @@ const Dashboard = () => {
   if (error) return <p>Error</p>;
 
   return (
-    <DashboardContainer>
-      <GetDashboardData {...data} />
-    </DashboardContainer>
+    <>
+      <Helmet>
+        <title>MGC - Dashboard</title>
+      </Helmet>
+      <DashboardContainer>
+        <GetDashboardData {...data} />
+      </DashboardContainer>
+    </>
   );
 };
 

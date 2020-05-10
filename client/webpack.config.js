@@ -1,5 +1,7 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const WebpackPWAManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   entry: './src/index.js',
@@ -31,6 +33,19 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       filename: './index.html',
+    }),
+    new WebpackPWAManifest({
+      name: 'MGC | Employees management system',
+      short_name: 'MGC',
+      description: 'Provide a way to manage information about your employees',
+      background_color: '#fff',
+      theme_color: '#15171a',
+      icons: [
+        {
+          src: path.resolve('src/assets/icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+        },
+      ],
     }),
   ],
 };

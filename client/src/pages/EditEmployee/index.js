@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import UpdateEmployee from '../../containers/UpdateEmployee';
 import { Container } from './styles';
@@ -11,9 +12,14 @@ const EditEmployee = props => {
   } = props;
 
   return (
-    <Container>
-      <UpdateEmployee id={id} />
-    </Container>
+    <>
+      <Helmet>
+        <title>MGC - Edit Employee</title>
+      </Helmet>
+      <Container>
+        <UpdateEmployee id={id} />
+      </Container>
+    </>
   );
 };
 

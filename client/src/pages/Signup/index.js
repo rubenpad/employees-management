@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -21,9 +22,14 @@ const Signup = () => {
   });
 
   return (
-    <Container>
-      <SignupForm loading={loading} error={error} signup={signup} />
-    </Container>
+    <>
+      <Helmet>
+        <title>Signup</title>
+      </Helmet>
+      <Container>
+        <SignupForm loading={loading} error={error} signup={signup} />
+      </Container>
+    </>
   );
 };
 

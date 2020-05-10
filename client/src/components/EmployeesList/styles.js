@@ -26,19 +26,14 @@ export const Top = styled.div`
 `;
 
 export const Link = styled(LinkRouter)`
-  display: none;
-
-  ${responsive.medium`
-    display: inline;
-    margin-top: 16px;
-    padding: 8px 16px;
-    background: ${colors.dark};
-    color: ${colors.light};
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    justify-self: end;
-  `}
+  display: inline;
+  padding: 8px 16px;
+  background: ${colors.dark};
+  color: ${colors.light};
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  justify-self: end;
 `;
 
 export const SearchLabel = styled.label`
