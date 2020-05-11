@@ -17,6 +17,7 @@ export const GET_DATA = gql`
       salary
       status
       city
+      categoryId
     }
 
     categories {
@@ -37,13 +38,25 @@ const Dashboard = () => {
 
   const { employees, categories } = data;
 
+  // Mark categories with hasEmployee property if has
+  // one or more employees associate to it
+  const markedCategories = categories.map(category => {
+    employees.forEach(employee => {
+      if (employee.categoryId === category.id) {
+        category.hasEmployee = true;
+      }
+    });
+
+    return category;
+  });
+
   return (
     <>
       <Helmet>
         <title>MGC - Dashboard</title>
       </Helmet>
       <DashboardContainer>
-        <GetDashboardData categories={categories} employees={employees} />
+        <GetDashboardData categories={markedCategories} employees={employees} />
       </DashboardContainer>
     </>
   );
