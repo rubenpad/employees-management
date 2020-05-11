@@ -20,9 +20,10 @@ export const GET_EMAIL = gql`
 `;
 
 const Header = () => {
-  const { data } = useQuery(GET_EMAIL);
+  const { data, client } = useQuery(GET_EMAIL);
 
   const handleClick = () => {
+    client.resetStore();
     localStorage.clear();
     window.location.href = '/login';
   };

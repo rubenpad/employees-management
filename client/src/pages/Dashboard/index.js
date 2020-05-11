@@ -1,14 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useApolloClient } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import Loader from '../../components/Loader';
 import GetDashboardData from '../../containers/GetDashboardData';
 import { DashboardContainer } from './styles';
 
-const GET_DATA = gql`
-  query {
+export const GET_DATA = gql`
+  query getData {
     employees {
       id
       firstName
@@ -27,12 +27,18 @@ const GET_DATA = gql`
 `;
 
 const Dashboard = () => {
-  const { data, loading, error } = useQuery(GET_DATA);
+  const { data, client, loading, error } = useQuery(GET_DATA);
 
   if (loading) return <Loader />;
 
-  if (error) return <p>Error</p>;
+  if (error) return <p>{error.message}</p>;
 
+  client.writeData({
+    data: {
+      employees: [...data.employees],
+      categories: [...data.categories],
+    },
+  });
   return (
     <>
       <Helmet>

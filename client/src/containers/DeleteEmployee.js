@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -17,8 +17,9 @@ const DELETE_EMPLOYEE = gql`
 const DeleteEmployee = ({ employeeId, openModal, closeModal, modalMode }) => {
   const [deleteEmployee, { loading, error }] = useMutation(DELETE_EMPLOYEE, {
     variables: { id: employeeId },
+    refetchQueries: ['getData'],
     onCompleted(_) {
-      window.location.reload();
+      closeModal();
     },
   });
 

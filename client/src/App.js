@@ -19,8 +19,8 @@ const IS_LOGGED_IN = gql`
 `;
 
 const App = () => {
-  const cache = useQuery(IS_LOGGED_IN);
-  const isAuth = cache.data.isLoggedIn;
+  const { data } = useQuery(IS_LOGGED_IN);
+  const isAuth = data.isLoggedIn;
 
   return (
     <BrowserRouter>
