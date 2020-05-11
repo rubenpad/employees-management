@@ -105,7 +105,7 @@ function createStore() {
   companiesCategories.belongsTo(categories)
 
   // Create tables
-  if (process.env.SETUP) {
+  if (process.env.SETUP === 'true') {
     database.sync({ force: true })
   }
 

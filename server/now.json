@@ -11,5 +11,14 @@
       "src": "/.*",
       "dest": "src/index.js"
     }
-  ]
+  ],
+  "env": {
+    "DB_DIALECT": "@mgc_db_dialect",
+    "DB_HOST": "@mgc_db_host",
+    "DB_PORT": "mgc_db_port",
+    "DB_NAME": "@mgc_db_name",
+    "DB_USER": "@mgc_db_user",
+    "DB_PASSWORD": "@mgc_db_password",
+    "SECRET": "@mgc_secret"
+  }
 }
