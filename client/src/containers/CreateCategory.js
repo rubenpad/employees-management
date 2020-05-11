@@ -16,8 +16,9 @@ const CREATE_CATEGORY = gql`
 
 const CreateCategory = ({ mode, openModal, closeModal }) => {
   const [createCategory, { loading, error }] = useMutation(CREATE_CATEGORY, {
-    onCompleted(_) {
-      window.location.reload();
+    refetchQueries: ['getData'],
+    onCompleted() {
+      closeModal();
     },
   });
 

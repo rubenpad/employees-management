@@ -28,6 +28,12 @@ const client = new ApolloClient({
       },
     });
   },
+  onError: error => {
+    if (error && error.networkError.result.code === 'invalid_token') {
+      localStorage.clear();
+      window.location.href = '/user';
+    }
+  },
 });
 
 ReactDOM.render(

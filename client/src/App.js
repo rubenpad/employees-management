@@ -11,6 +11,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import NewEmployee from './pages/NewEmployee';
 import EditEmployee from './pages/EditEmployee';
+import NotFound from './pages/NotFound';
 
 const IS_LOGGED_IN = gql`
   query {
@@ -45,6 +46,7 @@ const App = () => {
             path="/employees/edit/:id"
             component={isAuth ? EditEmployee : Login}
           />
+          <Route component={NotFound} />
         </Switch>
       </Layout>
     </BrowserRouter>
