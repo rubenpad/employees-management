@@ -11,12 +11,16 @@ import { typeDefs, resolvers } from './graphql/resolvers';
 const container = document.getElementById('root');
 const token = localStorage.getItem('token');
 const cache = new InMemoryCache();
+const URI =
+  process.env.NODE_ENV === 'production'
+    ? process.env.URI
+    : 'http://localhost:4000/graphql';
 const client = new ApolloClient({
   cache,
   resolvers,
   typeDefs,
   link: new HttpLink({
-    uri: process.env.URI,
+    uri: URI,
     headers: {
       authorization: token ? `Bearer ${token}` : '',
     },

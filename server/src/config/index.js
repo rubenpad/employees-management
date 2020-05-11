@@ -15,10 +15,13 @@ const config = {
     dialect: process.env.DB_DIALECT,
     logging: false
   },
-  sqlite: {
-    dialect: 'sqlite',
-    storage: './store.sqlite',
-    logging: false
+  dbDev: {
+    host: process.env.DEV_DB_HOST,
+    port: process.env.DEV_DB_PORT,
+    database: process.env.DEV_DB_NAME,
+    username: process.env.DEV_DB_USER,
+    password: process.env.DEV_DB_PASSWORD,
+    dialect: process.env.DEV_DB_DIALECT
   }
 }
 

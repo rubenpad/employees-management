@@ -4,9 +4,8 @@ const { Sequelize, DataTypes } = require('sequelize')
 const { config } = require('../config')
 
 function createStore() {
-  const database = new Sequelize({
-    ...config.sqlite
-  })
+  const setup = process.env.NODE_ENV === 'production' ? config.db : config.dbDev
+  const database = new Sequelize({ ...setup })
 
   const companies = database.define('company', {
     id: {
@@ -104,6 +103,11 @@ function createStore() {
   companiesCategories.belongsTo(companies)
   categories.hasMany(companiesCategories)
   companiesCategories.belongsTo(categories)
+
+  // Create tables
+  if (process.env.SETUP) {
+    database.sync({ force: true })
+  }
 
   return { database, companies, categories, employees, companiesCategories }
 }
