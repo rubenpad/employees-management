@@ -86,6 +86,9 @@ export const Ul = styled.ul`
 `;
 
 export const Item = styled.li`
+  position: relative;
+  display: flex;
+  align-items: center;
   padding: 8px;
   cursor: pointer;
   user-select: none;
@@ -94,5 +97,18 @@ export const Item = styled.li`
     width: 16px;
     height: 16px;
     margin-right: 8px;
+  }
+
+  label {
+    width: 90%;
+    cursor: pointer;
+  }
+
+  svg {
+    width: 20px;
+
+    &:hover {
+      color: ${colors.error};
+    }
   }
 `;
