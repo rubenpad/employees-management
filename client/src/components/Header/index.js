@@ -22,8 +22,8 @@ export const GET_EMAIL = gql`
 const Header = () => {
   const { data, client } = useQuery(GET_EMAIL);
 
-  const handleClick = () => {
-    client.resetStore();
+  const handleClick = async () => {
+    await client.resetStore();
     localStorage.clear();
     window.location.href = '/login';
   };

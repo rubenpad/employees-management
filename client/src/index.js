@@ -46,7 +46,7 @@ const client = new ApolloClient({
 // Function that get called when client.restoreCache function
 // is called in our application
 client.onResetStore(() => {
-  setState({ data: { state } });
+  setState({ data });
 });
 
 ReactDOM.render(
