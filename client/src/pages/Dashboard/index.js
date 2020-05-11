@@ -27,25 +27,23 @@ export const GET_DATA = gql`
 `;
 
 const Dashboard = () => {
-  const { data, client, loading, error } = useQuery(GET_DATA);
+  const { data, loading, error } = useQuery(GET_DATA, {
+    fetchPolicy: 'network-only',
+  });
 
   if (loading) return <Loader />;
 
-  if (error) return <p>{error.message}</p>;
+  if (error) return <p>Try again</p>;
 
-  client.writeData({
-    data: {
-      employees: [...data.employees],
-      categories: [...data.categories],
-    },
-  });
+  const { employees, categories } = data;
+
   return (
     <>
       <Helmet>
         <title>MGC - Dashboard</title>
       </Helmet>
       <DashboardContainer>
-        <GetDashboardData {...data} />
+        <GetDashboardData categories={categories} employees={employees} />
       </DashboardContainer>
     </>
   );
