@@ -4,8 +4,8 @@
   "description": "MGC - Employees Management API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index",
-    "start:ci": "NODE_ENV=production node src/index",
+    "start:dev": "nodemon src/index",
+    "start": " node src/index",
     "test": "jest"
   },
   "repository": {
