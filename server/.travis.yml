@@ -1,0 +1,19 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+node_js:
+  - '12'
+git:
+  depth: 3
+script:
+  - yarn test
+deploy:
+  provide: heroku
+  skip-cleanup: true
+  keep-history: true
+  api-key:
+  app: mgc
+  on:
+    repo: rubbenpad/employees-management/server

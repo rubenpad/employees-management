@@ -6,10 +6,12 @@ This is the front-end layer of a project to manage the information of workers in
 
 Through the development of this project I use modern technologies and best practices to write code. The main idea is to apply my knowledge to make both frontend and backend layers and integrate them to delivery a great application that can be scalable an maintainable through time.
 
+**Before you start make sure you have running the API** by default the URI is localhost:4000/graphql. See api folder to run api.
+
 
 ### 🚀 Quick start
 
-1. Clone the repository
+1. Clone repository
 
     `git clone git@github.com:rubbenpad/employees-management.git`
 
@@ -25,7 +27,7 @@ Through the development of this project I use modern technologies and best pract
  
     `npm run dev`
 
-5. Open the source code and make the magic happens
+5. Open the source code and makes the magic happen
 
 
 ### Test
@@ -40,7 +42,7 @@ Through the development of this project I use modern technologies and best pract
 
 3. Know the application test coverage
 
-    `npm run test:coverage`
+    `npm run test -- --coverage`
 
 
 ### If you want to try the application in production mode:

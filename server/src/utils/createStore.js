@@ -4,8 +4,7 @@ const { Sequelize, DataTypes } = require('sequelize')
 const { config } = require('../config')
 
 function createStore() {
-  const setup =
-    process.env.NODE_ENV === 'production' ? config.db : config.dbDev
+  const setup = process.env.NODE_ENV === 'production' ? config.db : config.dbDev
   const database = new Sequelize({ ...setup })
 
   const companies = database.define('company', {
