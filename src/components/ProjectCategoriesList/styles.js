@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, responsive } from '../../styles/';
+import { colors, responsive } from '../../styles';
 
 export const ListContainer = styled.div`
   position: sticky;
