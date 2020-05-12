@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -8,6 +8,7 @@ import DeleteEmployee from '../../containers/DeleteEmployee';
 import { ItemContainer, ItemContent, Information, Action } from './styles';
 
 const EmployeesListItem = ({ employee }) => {
+  // Custom hook to manage modal state open or closed
   const { mode, openModal, closeModal } = useModal();
 
   return (

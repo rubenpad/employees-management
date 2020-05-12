@@ -17,10 +17,11 @@
     },
     {
       "src": "/.*",
-      "dest": "public/index.html"
+      "dest": "index.html"
     }
   ],
   "env": {
-    "URI": "@uri_api"
+    "URI": "@uri_api",
+    "NODE_ENV": "@node_env"
   }
 }

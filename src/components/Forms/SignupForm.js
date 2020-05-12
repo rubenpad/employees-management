@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { Input } from '../Inputs';
 import Loader from '../Loader';
-import { FormContainer, Form, Button, Link } from './styles';
+import { FormContainer, Form, Button, Link, Error } from './styles';
 
 const SignupForm = ({ loading, error, signup }) => {
   return (
@@ -21,7 +21,7 @@ const SignupForm = ({ loading, error, signup }) => {
             .min(3, 'Please enter a company name longer than three characters')
             .required('Company name is required'),
           email: Yup.string()
-            .email(`That email address doesn't look right`)
+            .email("That email address doesn't look right")
             .required('Email address is required'),
           password: Yup.string()
             .min(8, 'Please set a password longer than eight characters')
@@ -46,6 +46,9 @@ const SignupForm = ({ loading, error, signup }) => {
             type="password"
           />
           {loading && <Loader />}
+          {error && (
+            <Error>Error trying to create your account. Please retry!</Error>
+          )}
           <Button type="submit">Create account</Button>
         </Form>
       </Formik>

@@ -5,10 +5,15 @@ import EmployeesListItem from '../EmployeesListItem';
 import { Container, Top, SearchLabel, Link } from './styles';
 
 const EmployeesList = ({ employees }) => {
+  // Manage the state of search bar query
   const [query, setQuery] = useState('');
   const [filteredEmployees, setFilteredEmployees] = useState(employees);
 
-  // Filter employees by first name and last name
+  /**
+   * Filter employees by first name and last name
+   * useMemo to save previous results
+  */
+
   useMemo(() => {
     const results = employees.filter(employee => {
       return `${employee.firstName} ${employee.lastName}`

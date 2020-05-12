@@ -3,6 +3,10 @@ import { useField } from 'formik';
 
 import { Label, StyledSelect, Error } from './styles';
 
+/**
+ * Custom inputs with formik to use in forms
+*/
+
 const Input = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 

@@ -13,6 +13,7 @@ import {
   Profile,
 } from './styles';
 
+// Get the email from apollo client local state
 export const GET_EMAIL = gql`
   query {
     email @client
@@ -22,6 +23,7 @@ export const GET_EMAIL = gql`
 const Header = () => {
   const { data } = useQuery(GET_EMAIL);
 
+  // Helper function to get logged out
   const handleClick = () => {
     localStorage.clear();
     window.location.href = '/login';

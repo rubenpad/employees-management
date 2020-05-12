@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Input } from '../Inputs';
-import Loader from '../Loader'
-import { FormContainer, Form, Button, Link } from './styles';
+import Loader from '../Loader';
+import { FormContainer, Form, Button, Link, Error } from './styles';
 
 const LoginForm = ({ login, loading, error }) => {
   return (
@@ -17,7 +17,7 @@ const LoginForm = ({ login, loading, error }) => {
         }}
         validationSchema={Yup.object({
           email: Yup.string()
-            .email(`That email address doesn't look right`)
+            .email("That email address doesn't look right")
             .required('Email address is required'),
           password: Yup.string().required('Please enter your password'),
         })}
@@ -41,6 +41,7 @@ const LoginForm = ({ login, loading, error }) => {
             type="password"
           />
           {loading && <Loader />}
+          {error && <Error>Email or password wrong. Retry!</Error>}
           <Button type="submit">Login</Button>
         </Form>
       </Formik>

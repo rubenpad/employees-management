@@ -6,6 +6,12 @@ import { Input, Select } from '../Inputs';
 import Loader from '../Loader';
 import { FormContainerExtended, LargeForm, Button } from './styles';
 
+/**
+ *
+ * @param {function} createOrUpdateEmployee Mutation form graphql to
+ * create or update employees data
+ * @param {Array} data Date returned from the graphql mutation
+ */
 const EmployeeForm = ({
   createOrUpdateEmployee,
   data,
@@ -26,7 +32,7 @@ const EmployeeForm = ({
           status: data && data.employee ? data.employee.status : '',
           categoryId:
             data && data.employee
-              ? Number.parseInt(data.employee.categoryId)
+              ? Number.parseInt(data.employee.categoryId, 10)
               : '',
         }}
         validationSchema={Yup.object({
@@ -39,7 +45,7 @@ const EmployeeForm = ({
             .matches(/[a-zA-Z]/, 'Enter a valid name')
             .required('Employee name is required'),
           email: Yup.string()
-            .email(`That email doesn't look right`)
+            .email("That email doesn't look right")
             .required('Email address is required'),
           salary: Yup.number().min(4).required('Employee salary is required'),
           city: Yup.string(),
@@ -49,7 +55,7 @@ const EmployeeForm = ({
             variables: {
               input: {
                 ...values,
-                categoryId: Number.parseInt(values.categoryId),
+                categoryId: Number.parseInt(values.categoryId, 10),
               },
             },
           });
@@ -84,8 +90,8 @@ const EmployeeForm = ({
                 </option>
               ))}
           </Select>
-          {error && <p>Oops! Something is wrong. Try again</p>}
           {loading && <Loader />}
+          {error && <p>{`Error try to ${title.toLowerCase()}`}</p>}
           <Button type="submit">{title}</Button>
         </LargeForm>
       </Formik>

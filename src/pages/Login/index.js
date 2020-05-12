@@ -16,11 +16,17 @@ const LOGIN = gql`
 `;
 
 const Login = () => {
+  // Provide an instance of apollo client to write if user company
+  // is logged in and its email to show the avatar in header
   const client = useApolloClient();
   const [login, { loading, error }] = useMutation(LOGIN, {
     onCompleted({ login }) {
       localStorage.setItem('token', login.token);
       client.writeData({ data: { isLoggedIn: true, email: login.email } });
+    },
+    // If login fail return the error
+    onError(error) {
+      return error;
     },
   });
 

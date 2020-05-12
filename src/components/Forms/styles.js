@@ -119,3 +119,7 @@ export const Button = styled.button`
     opacity: 1;
   }
 `;
+
+export const Error = styled.span`
+  color: ${colors.error};
+`

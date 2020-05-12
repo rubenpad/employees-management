@@ -4,8 +4,11 @@ import * as Yup from 'yup';
 
 import { Input } from '../Inputs';
 import Loader from '../Loader';
-import { FormContainer, Form, Button } from './styles';
+import { FormContainer, Form, Button, Error } from './styles';
 
+/**
+ * Form to create or update a project category
+ */
 const CategoryForm = ({ title, createOrUpdateCategory, loading, error }) => {
   return (
     <FormContainer>
@@ -31,6 +34,7 @@ const CategoryForm = ({ title, createOrUpdateCategory, loading, error }) => {
             placeholder="Design"
           />
           {loading && <Loader />}
+          {error && <Error>Error trying to save category. Please retry</Error>}
           <Button type="submit">{title}</Button>
         </Form>
       </Formik>

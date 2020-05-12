@@ -4,6 +4,10 @@ import gravatar from '../../utils/gravatar';
 
 import { Image } from './styles';
 
+/**
+ *
+ * @param {string} email Email from the user company logged
+ */
 const Avatar = ({ email }) => {
   const urlSrc = gravatar(email);
 
@@ -11,7 +15,7 @@ const Avatar = ({ email }) => {
 };
 
 Avatar.defaultProps = {
-  email: 'any@mail.com',
+  email: '',
 };
 
 Avatar.propTypes = {
