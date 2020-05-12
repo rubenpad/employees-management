@@ -1,19 +1,22 @@
 language: node_js
 cache:
   directories:
-    - node_modules
-    - ~/.npm
+  - node_modules
+  - "~/.npm"
 node_js:
-  - '12'
+- '12'
 git:
   depth: 3
 script:
-  - yarn test
+- yarn test
 deploy:
   provide: heroku
   skip-cleanup: true
   keep-history: true
-  api-key:
+  api_key: 
   app: mgc
   on:
     repo: rubbenpad/employees-management/server
+env:
+  global:
+    secure: mgjX5zoJnm1no9T3nKNXsVKOFBBu5JpXesG7RdNoOYn86hvDIhnpVJg2OOp6/ysoxCETl+gnMaN0MxR1aXVNLafBcjXhlMe9fWAWzRLuEcUzzPnRFqumjqqyjjfsee+tWEVD7OUhiGHC41q1klPdhxQDcec0BisHim8bINUtf3YpdUXOaZVg3Hb/UxFmqXKLRM0bNG676QuTvBc3qyer38yZlZFStTPaDMhH08ZwvKfWqoR5svV7aVWLQWGEN10nuX/uL4Eto7YUe1ssoCdPLIXye0ai1qZmvYVUzUQFtEyLzHlv/19l7rbMXuXmgeQ3VkvD68UuCPg1z4xbGLDWxTay39W50zI2gHx5PwxXqPvQlpxxoBtjiRr+TBl4p8t8X9oGS9wwESGgu2p3wbZs+DoahMAiwyXdycxlHx4zKaIoZexVhIrMWOIU+24lc4l/OXsON/zUA8pLQdO+2HdLmGtraAHplvGwSKhbcMGsUbPSyjFKimhWZ48JS1eQR3aWAz6DvwJ+EYhpcVK21aEoaJUMjAeBlnWoirRb/zqnI5vOxRBwKme+EcviiGQuOB7FDiViZVYxKIZYPFcDqqMq/RDxj9d51NaCaef9L0zifDI2oduYELq/3GhTUZqEKRsDU9E5GRkkjezjulrEZ7uK8C8mYTV2oq0SqIy4aL8KpQI=
