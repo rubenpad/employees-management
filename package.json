@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "webpack-dev-server --hot --open --mode development",
-    "build": "webpack --mode production",
+    "build": "NODE_ENV=production webpack --mode production",
     "test": "jest"
   },
   "dependencies": {

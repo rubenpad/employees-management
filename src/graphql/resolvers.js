@@ -9,12 +9,4 @@ export const typeDefs = gql`
   }
 `;
 
-export const resolvers = (getState, setState) => {
-  return {
-    Mutation: {
-      updateEmployees: (_root, { id }, { cache }) => {
-        console.log(id);
-      },
-    },
-  };
-};
+export const resolvers = {};

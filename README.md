@@ -6,7 +6,7 @@ This is the front-end layer of a project to manage the information of workers in
 
 Through the development of this project I use modern technologies and best practices to write code. The main idea is to apply my knowledge to make both frontend and backend layers and integrate them to delivery a great application that can be scalable an maintainable through time.
 
-**Before you start make sure you have running the API** by default the URI is localhost:4000/graphql. See api folder to run api.
+**Before you start make sure you have running the API** by default the URI is localhost:4000/graphql. See api [employees-management-api](https://github.com/rubbenpad/employees-management-api)
 
 
 ### 🚀 Quick start
