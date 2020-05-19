@@ -1,7 +1,5 @@
 ## Employees Management System
 
-📢 _This project is in development mode_
-
 This is the front-end layer of a project to manage the information of workers in a company. The purpose is to implement a basic system that allow us to create, read, updated and delete information about employees.
 
 Through the development of this project I use modern technologies and best practices to write code. The main idea is to apply my knowledge to make both frontend and backend layers and integrate them to delivery a great application that can be scalable an maintainable through time.
