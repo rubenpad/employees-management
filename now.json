@@ -22,6 +22,5 @@
   ],
   "env": {
     "URI": "@uri_api",
-    "NODE_ENV": "@node_env"
   }
 }
