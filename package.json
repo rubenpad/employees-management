@@ -38,7 +38,7 @@
     "react-helmet": "6.0.0",
     "react-router-dom": "5.1.2",
     "styled-components": "5.0.1",
-    "webpack-pwa-manifest": "4.2.0",
+    "webpack-pwa-manifest": "4.3.0",
     "yup": "0.28.5"
   },
   "devDependencies": {
